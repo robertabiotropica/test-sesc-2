@@ -3,7 +3,7 @@
   "short_name": "Roteiro",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#F3F4F8",
-  "theme_color": "#2944C7",
+  "background_color": "#F5F7EC",
+  "theme_color": "#356100",
   "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
 }

@@ -1,4 +1,3 @@
-/* Layout: coluna única estilo app de celular; cabeçalho, abas fixas, faixa de dias rolável, lista de sessões agrupada por dia; aba Organizar para quem edita */
 /* Paleta: base marrom, destaque verde */
 :root{
   --bg:#F5F7EC; --surface:#FFFFFF; --ink:#240906; --muted:#6E534D; --line:#E2E5D3;
