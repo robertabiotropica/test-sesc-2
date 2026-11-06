@@ -1,21 +1,22 @@
 /* Layout: coluna única estilo app de celular; cabeçalho, abas fixas, faixa de dias rolável, lista de sessões agrupada por dia; aba Organizar para quem edita */
+/* Paleta: base marrom, destaque verde */
 :root{
-  --bg:#F3F4F8; --surface:#FFFFFF; --ink:#151A2E; --muted:#5A6079; --line:#DDE0EA;
-  --accent:#2944C7; --accent-soft:#E3E8FB; --live:#C62F4A; --live-soft:#FBE4E8; --star:#D99A00; --ok:#2E7D46; --ok-soft:#E1F2E6;
-  --c1:#B8441F; --c2:#7B3FB5; --c3:#1F7A8C; --c4:#2944C7; --c5:#D2701A; --c6:#9C2F6E; --c7:#2E8540; --c8:#6B6F1E;
+  --bg:#F5F7EC; --surface:#FFFFFF; --ink:#240906; --muted:#6E534D; --line:#E2E5D3;
+  --accent:#356100; --accent-soft:#D6FF84; --live:#6D2418; --live-soft:#F6E4DF; --star:#5D8921; --ok:#5D8921; --ok-soft:#ECF7D2;
+  --c1:#356100; --c2:#6D2418; --c3:#5D8921; --c4:#551B12; --c5:#85B042; --c6:#8A4A2E; --c7:#2B4A0A; --c8:#3C120C;
   --display:"Familjen Grotesk","Helvetica Neue",Arial,sans-serif;
   --body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0E1120; --surface:#171B2E; --ink:#ECEEF7; --muted:#9AA0BA; --line:#2A3048;
-  --accent:#8AA0FF; --accent-soft:#232B52; --live:#FF7A90; --live-soft:#3A1A24; --star:#FFC23D; --ok:#6CCB7E; --ok-soft:#1B3324;
-  --c1:#F08A62; --c2:#B88AEB; --c3:#5FC3D4; --c4:#8AA0FF; --c5:#F5A55C; --c6:#E482B8; --c7:#6CCB7E; --c8:#C9CD6A;
+  --bg:#0B0000; --surface:#240906; --ink:#F4F6E8; --muted:#C2ABA5; --line:#3C120C;
+  --accent:#D6FF84; --accent-soft:#2A3D0C; --live:#FF9A82; --live-soft:#551B12; --star:#D6FF84; --ok:#AED863; --ok-soft:#2A3D0C;
+  --c1:#D6FF84; --c2:#F0A08C; --c3:#AED863; --c4:#D97F69; --c5:#85B042; --c6:#E8C2A8; --c7:#C3EB7A; --c8:#B5654F;
   color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#0E1120; --surface:#171B2E; --ink:#ECEEF7; --muted:#9AA0BA; --line:#2A3048;
-  --accent:#8AA0FF; --accent-soft:#232B52; --live:#FF7A90; --live-soft:#3A1A24; --star:#FFC23D; --ok:#6CCB7E; --ok-soft:#1B3324;
-  --c1:#F08A62; --c2:#B88AEB; --c3:#5FC3D4; --c4:#8AA0FF; --c5:#F5A55C; --c6:#E482B8; --c7:#6CCB7E; --c8:#C9CD6A;
+  --bg:#0B0000; --surface:#240906; --ink:#F4F6E8; --muted:#C2ABA5; --line:#3C120C;
+  --accent:#D6FF84; --accent-soft:#2A3D0C; --live:#FF9A82; --live-soft:#551B12; --star:#D6FF84; --ok:#AED863; --ok-soft:#2A3D0C;
+  --c1:#D6FF84; --c2:#F0A08C; --c3:#AED863; --c4:#D97F69; --c5:#85B042; --c6:#E8C2A8; --c7:#C3EB7A; --c8:#B5654F;
   color-scheme:dark}
 
 *{box-sizing:border-box}
