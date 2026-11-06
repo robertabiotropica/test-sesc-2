@@ -54,6 +54,13 @@
       return {...s, id, atividade, trilhas, start, end};
     }).sort((a, b) => a.start - b.start || a.titulo.localeCompare(b.titulo));
   }
+  function signup(s) {
+    const txt = s.como_participar || "";
+    const link = s.link_inscricao || (CFG.inscricao && CFG.inscricao.link && /inscri[cç]/i.test(txt) ? CFG.inscricao.link : "");
+    if (link) return {link: /^https?:\/\//.test(link) ? link : "https://" + link, rotulo: (CFG.inscricao && CFG.inscricao.rotulo) || "Inscreva-se"};
+    if (/retirada de senha/i.test(txt)) return {senha: true};
+    return null;
+  }
   const lastEnd = () => SESS.length ? Math.max(...SESS.map(x => +x.end)) : 0;
 
   /* ---------- planilha (CSV/TSV) ---------- */
@@ -74,7 +81,7 @@
     return rows.filter(r => r.some(v => v.trim() !== ""));
   }
   const norm = s => String(s).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().trim().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "");
-  const ALIAS = {titulo:"titulo",title:"titulo",nome:"titulo",atividade:"atividade",codigo:"atividade",tipo:"tipo",formato:"tipo",trilha:"trilhas",trilhas:"trilhas",com:"com",artistas:"com",creditos:"com",descricao:"descricao",local:"local",espaco:"local",data:"data",dia:"data",inicio:"inicio",hora:"inicio",horario:"inicio",fim:"fim",termino:"fim",entrada:"entrada",preco:"entrada",classificacao:"classificacao",idade:"classificacao",acessibilidade:"acessibilidade",como_participar:"como_participar",inscricao:"como_participar",obs:"como_participar",observacoes:"como_participar",id:"id"};
+  const ALIAS = {titulo:"titulo",title:"titulo",nome:"titulo",atividade:"atividade",codigo:"atividade",tipo:"tipo",formato:"tipo",trilha:"trilhas",trilhas:"trilhas",com:"com",artistas:"com",creditos:"com",descricao:"descricao",local:"local",espaco:"local",data:"data",dia:"data",inicio:"inicio",hora:"inicio",horario:"inicio",fim:"fim",termino:"fim",entrada:"entrada",preco:"entrada",classificacao:"classificacao",idade:"classificacao",acessibilidade:"acessibilidade",como_participar:"como_participar",inscricao:"como_participar",link_inscricao:"link_inscricao",link:"link_inscricao",obs:"como_participar",observacoes:"como_participar",id:"id"};
   function normDate(v) {
     v = String(v).trim(); let m;
     if ((m = v.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/))) return `${m[1]}-${pad(m[2])}-${pad(m[3])}`;
@@ -187,9 +194,12 @@
     if (s.entrada) tags.push(`<span class="tag">${/gr[aá]tis/i.test(s.entrada) ? "Grátis" : "Pago"}</span>`);
     if (s.classificacao) tags.push(`<span class="tag">${esc(s.classificacao)}</span>`);
     if (s.acessibilidade) tags.push(`<span class="tag">${esc(s.acessibilidade)}</span>`);
+    const su = signup(s), ended = st && st.k === "past";
+    if (su && su.senha && !ended) tags.push(`<span class="tag">Senha no local</span>`);
+    const cta = su && su.link && !ended ? `<a class="cta" href="${esc(su.link)}" target="_blank" rel="noopener">${esc(su.rotulo)} <span aria-hidden="true">↗</span></a>` : "";
     return `<article class="card${st && st.k === "past" ? " past" : ""}${st && st.k === "live" ? " live" : ""}" style="--c:${trilhaColor(s.trilhas[0])}">
       <div class="time">${hfmt(s.inicio)}${s.fim ? `<small>até ${hfmt(s.fim)}</small>` : ""}</div>
-      <div class="body"><button class="open" data-open="${esc(s.id)}"><span class="kind">${esc(s.tipo)}</span><span class="title">${esc(s.titulo)}</span>${s.com ? `<span class="who">${esc(s.com)}</span>` : ""}<span class="who">${esc(s.local)}</span></button><div class="tags">${tags.join("")}</div></div>
+      <div class="body"><button class="open" data-open="${esc(s.id)}"><span class="kind">${esc(s.tipo)}</span><span class="title">${esc(s.titulo)}</span>${s.com ? `<span class="who">${esc(s.com)}</span>` : ""}<span class="who">${esc(s.local)}</span></button><div class="tags">${tags.join("")}</div>${cta}</div>
       <button class="star" data-star="${esc(s.id)}" aria-pressed="${favs.has(s.id)}" aria-label="${favs.has(s.id) ? "Remover dos favoritos" : "Adicionar aos favoritos"}">${favs.has(s.id) ? "★" : "☆"}</button>
     </article>`;
   }
@@ -221,6 +231,7 @@
       <div class="facts">${fact("Local", s.local)}${fact("Entrada", s.entrada)}${fact("Classificação", s.classificacao)}${fact("Acessibilidade", s.acessibilidade)}${fact("Como participar", s.como_participar)}${fact("Trilhas", s.trilhas.join(", "))}</div>
       <div class="facts"><span class="kind">${list.length > 1 ? "Todas as datas" : "Data"}</span>
         <div class="occ">${list.map(o => `<span class="${n >= o.start && n < o.end ? "now" : ""}">${fmtDay(o.data)} · ${o.inicio}${o.fim ? "–" + o.fim : ""}${n >= o.end ? " · encerrada" : ""}</span>`).join("")}</div></div>
+      ${(() => { const su = signup(s); if (!su || n >= list[list.length - 1].end) return ""; return su.link ? `<a class="cta big" href="${esc(su.link)}" target="_blank" rel="noopener">${esc(su.rotulo)} <span aria-hidden="true">↗</span></a>` : `<p class="hint" style="margin:0">Sem inscrição prévia: retire sua senha no local, ${esc(s.como_participar.replace(/^retirada de senhas?\s*/i, ""))}.</p>`; })()}
       <div class="row"><button class="ghost" data-star="${esc(s.id)}" aria-pressed="${favs.has(s.id)}">${favs.has(s.id) ? "★ Nos favoritos" : "☆ Adicionar aos favoritos"}</button></div>
     </div></div>`;
     el.hidden = false; el.querySelector(".close").focus();

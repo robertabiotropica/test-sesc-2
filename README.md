@@ -61,6 +61,11 @@ Pronto: o site lê a planilha a cada minuto. O Google pode levar alguns minutos 
 | acessibilidade | | Libras |
 | como_participar | | Retirada de ingressos 1 hora antes |
 | atividade | | Código que liga várias datas da mesma atividade |
+| link_inscricao | | Link do botão "Inscreva-se" desta sessão |
+
+### Botão "Inscreva-se"
+
+No `evento.json`, o bloco `"inscricao"` define o texto do botão e o link padrão. O botão aparece nas sessões cujo "como participar" fala em inscrição. Para usar outro link numa sessão, preencha a coluna `link_inscricao`. Sessões com retirada de senha mostram "Senha no local" em vez do botão.
 
 ## Criar um novo evento
 

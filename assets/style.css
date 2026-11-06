@@ -140,3 +140,8 @@ code{font-family:var(--mono);font-size:12.5px;background:var(--bg);padding:1px 5
 footer{color:var(--muted);font-size:13px;text-align:center;padding-block:8px 32px}
 @media (prefers-reduced-motion:no-preference){.tag.live{animation:blink 2s ease-in-out infinite}@keyframes blink{50%{opacity:.7}}}
 @media (max-width:420px){.card{grid-template-columns:62px 1fr auto;gap:10px}.time{font-size:13px}.facts > div{grid-template-columns:1fr;gap:0}}
+
+.cta{justify-self:start;display:inline-flex;align-items:center;gap:6px;margin-top:8px;background:var(--accent);color:var(--surface);text-decoration:none;font-weight:700;font-size:14px;border-radius:999px;padding:7px 14px;line-height:1.2}
+.cta:hover{filter:brightness(1.08)}
+.cta:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.cta.big{font-size:16px;padding:11px 20px;margin-top:0}
