@@ -227,7 +227,7 @@
       </div></header>
       <nav class="tabs" aria-label="Seções"><div class="wrap">${tabs.map(([id, l]) => `<a href="#${id}" data-tab="${id}">${l}</a>`).join("")}</div></nav>
       <main><div class="wrap" id="view"></div></main>
-      <footer>Feito com <a href="/">${esc(window.ROTEIRO_NOME || "Roteiro")}</a></footer>
+      <footer>${esc(window.ROTEIRO_CREDITO || "Feito com Roteiro")}</footer>
       <div id="sheet" hidden></div>`;
     document.title = `${E().nome} · Programação`;
   }

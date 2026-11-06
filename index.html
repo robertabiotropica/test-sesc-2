@@ -27,7 +27,7 @@
   </section>
   <section style="display:grid;gap:10px;padding-bottom:48px" id="lista"><p class="hint">Carregando eventos…</p></section>
 </div></main>
-<footer>Roteiro</footer>
+<footer>Feito por Roberta Carvalho</footer>
 <script>
 fetch("/eventos/index.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{
   const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
