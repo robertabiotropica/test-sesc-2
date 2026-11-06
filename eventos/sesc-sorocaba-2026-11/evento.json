@@ -26,7 +26,10 @@
   "planilha_csv": "",
   "inscricao": {
     "rotulo": "Inscreva-se",
-    "link": "https://centralrelacionamento.sescsp.org.br"
+    "link": "https://centralrelacionamento.sescsp.org.br",
+    "endpoint": "",
+    "consentimento": "Autorizo o Sesc Sorocaba a usar estes dados apenas para organizar minha participação nesta atividade, conforme a Lei Geral de Proteção de Dados (LGPD).",
+    "mensagem_sucesso": "Se precisar, a equipe do Sesc Sorocaba entra em contato pelo e-mail ou telefone informados."
   },
   "emcartaz": [
     {

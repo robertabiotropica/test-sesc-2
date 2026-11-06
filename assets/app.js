@@ -55,12 +55,87 @@
     }).sort((a, b) => a.start - b.start || a.titulo.localeCompare(b.titulo));
   }
   function signup(s) {
-    const txt = s.como_participar || "";
-    const link = s.link_inscricao || (CFG.inscricao && CFG.inscricao.link && /inscri[cç]/i.test(txt) ? CFG.inscricao.link : "");
-    if (link) return {link: /^https?:\/\//.test(link) ? link : "https://" + link, rotulo: (CFG.inscricao && CFG.inscricao.rotulo) || "Inscreva-se"};
+    const txt = s.como_participar || "", I = CFG.inscricao || {}, rotulo = I.rotulo || "Inscreva-se";
+    const wants = !!s.link_inscricao || /inscri[cç]/i.test(txt);
+    if (wants && I.endpoint) return {form: true, rotulo};
+    const link = s.link_inscricao || (wants ? I.link : "");
+    if (link) return {link: /^https?:\/\//.test(link) ? link : "https://" + link, rotulo};
     if (/retirada de senha/i.test(txt)) return {senha: true};
     return null;
   }
+  function ctaHtml(s, su, extra) {
+    if (su.form) {
+      if (inscritas()[s.atividade]) return `<span class="cta done${extra}">Inscrição enviada ✓</span>`;
+      return `<button class="cta${extra}" data-inscrever="${esc(s.id)}">${esc(su.rotulo)}</button>`;
+    }
+    return su.link ? `<a class="cta${extra}" href="${esc(su.link)}" target="_blank" rel="noopener">${esc(su.rotulo)} <span aria-hidden="true">↗</span></a>` : "";
+  }
+  const inscritas = () => store.get("inscricoes", {});
+
+  /* ---------- formulário de inscrição ---------- */
+  const FAIXAS = ["Até 11 anos", "12 a 17 anos", "18 a 29 anos", "30 a 59 anos", "60 anos ou mais"];
+  function openForm(id) {
+    const s = SESS.find(x => x.id === id); if (!s) return;
+    const I = CFG.inscricao || {}, list = SESS.filter(x => x.atividade === s.atividade), c = store.get("contato", {});
+    const consent = I.consentimento || `Autorizo o uso destes dados apenas para organizar minha participação nesta atividade, conforme a LGPD.`;
+    const el = document.getElementById("sheet");
+    el.innerHTML = `<div class="sheet-bg" data-bg="1"><form class="sheet" id="fins" data-sid="${esc(s.id)}" role="dialog" aria-modal="true" aria-labelledby="fi-t" novalidate>
+      <button type="button" class="close" data-act="close">Fechar</button>
+      <span class="kind">Inscrição</span><h2 id="fi-t">${esc(s.titulo)}</h2>
+      <div class="facts">
+        <div><span>${list.length > 1 ? "Datas" : "Data"}</span><span>${list.map(o => `${fmtDay(o.data)}, ${hfmt(o.inicio)}${o.fim ? "–" + hfmt(o.fim) : ""}`).map(esc).join("<br>")}</span></div>
+        ${s.local ? `<div><span>Local</span><span>${esc(s.local)}</span></div>` : ""}
+        ${s.classificacao ? `<div><span>Classificação</span><span>${esc(s.classificacao)}</span></div>` : ""}
+        ${s.entrada ? `<div><span>Entrada</span><span>${esc(s.entrada)}</span></div>` : ""}
+      </div>
+      <div class="fields">
+        <div class="field full"><label for="fi-nome">Nome completo *</label><input id="fi-nome" name="nome" autocomplete="name" required value="${esc(c.nome || "")}"></div>
+        <div class="field"><label for="fi-email">E-mail *</label><input id="fi-email" name="email" type="email" autocomplete="email" inputmode="email" required value="${esc(c.email || "")}"></div>
+        <div class="field"><label for="fi-tel">Telefone / WhatsApp *</label><input id="fi-tel" name="telefone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(15) 99999-9999" required value="${esc(c.telefone || "")}"></div>
+        <div class="field"><label for="fi-faixa">Faixa etária de quem vai participar *</label><select id="fi-faixa" name="faixa_etaria" required><option value="">Escolha</option>${FAIXAS.map(f => `<option${c.faixa === f ? " selected" : ""}>${f}</option>`).join("")}</select></div>
+        <div class="field full"><label for="fi-acess">Precisa de algum recurso de acessibilidade? (opcional)</label><input id="fi-acess" name="acessibilidade" placeholder="Ex.: intérprete de Libras, cadeira de rodas"></div>
+        <div class="hp" aria-hidden="true"><label for="fi-site">Não preencha</label><input id="fi-site" name="site" tabindex="-1" autocomplete="off"></div>
+        <label class="consent field full"><span class="row" style="align-items:flex-start;flex-wrap:nowrap"><input type="checkbox" name="aceite" id="fi-aceite" required><span>${esc(consent)}</span></span></label>
+      </div>
+      <div id="fi-err" class="errmsg" role="alert" hidden></div>
+      <div class="row"><button type="submit" class="primary" id="fi-go">Enviar inscrição</button></div>
+      ${s.como_participar ? `<p class="hint" style="margin:0">${esc(s.como_participar)}</p>` : ""}
+    </form></div>`;
+    el.hidden = false; document.getElementById("fi-nome").focus();
+  }
+  async function sendForm(form) {
+    const s = SESS.find(x => x.id === form.dataset.sid); if (!s) return;
+    const fd = new FormData(form), v = k => String(fd.get(k) || "").trim();
+    const d = {nome: v("nome"), email: v("email"), telefone: v("telefone"), faixa_etaria: v("faixa_etaria"), acessibilidade: v("acessibilidade"), site: v("site"), aceite: fd.get("aceite") === "on"};
+    const errs = [];
+    if (d.nome.length < 3) errs.push("Informe seu nome completo.");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) errs.push("Confira o e-mail.");
+    if (d.telefone.replace(/\D/g, "").length < 10) errs.push("Informe o telefone com DDD.");
+    if (!d.faixa_etaria) errs.push("Escolha a faixa etária.");
+    if (!d.aceite) errs.push("Marque a autorização de uso dos dados.");
+    const box = document.getElementById("fi-err"), btn = document.getElementById("fi-go");
+    if (errs.length) { box.textContent = errs.join(" "); box.hidden = false; return; }
+    box.hidden = true; btn.disabled = true; btn.textContent = "Enviando…";
+    const list = SESS.filter(x => x.atividade === s.atividade);
+    const payload = {...d, evento: E().nome, atividade: s.titulo, atividade_id: `${slug}/${s.atividade}`, local: s.local || "",
+      datas: list.map(o => `${o.data} ${o.inicio}${o.fim ? "-" + o.fim : ""}`).join("; "), origem: location.origin + location.pathname};
+    try {
+      const r = await fetch(CFG.inscricao.endpoint, {method: "POST", headers: {"Content-Type": "text/plain;charset=utf-8"}, body: JSON.stringify(payload)});
+      const j = await r.json();
+      if (!j.ok) throw j;
+      store.set("contato", {nome: d.nome, email: d.email, telefone: d.telefone, faixa: d.faixa_etaria});
+      const m = inscritas(); m[s.atividade] = true; store.set("inscricoes", m);
+      form.innerHTML = `<button type="button" class="close" data-act="close">Fechar</button>
+        <span class="kind">Inscrição</span><h2>${j.repetida ? "Você já estava inscrito" : "Inscrição recebida"}</h2>
+        <div class="okmsg">${j.repetida ? `Já existe uma inscrição com o e-mail ${esc(d.email)} em "${esc(s.titulo)}". Não é preciso enviar de novo.` : `Sua inscrição em "${esc(s.titulo)}" foi registrada para ${esc(d.nome)}.`}</div>
+        <p class="hint" style="margin:0">${esc(CFG.inscricao.mensagem_sucesso || "Se precisar, a organização entra em contato pelo e-mail ou telefone informados.")}</p>`;
+      render();
+    } catch (err) {
+      box.textContent = err && err.erro === "dados_invalidos" ? "Algum dado não foi aceito. Confira nome, e-mail e telefone." : "Não foi possível enviar agora. Confira sua conexão e tente de novo.";
+      box.hidden = false; btn.disabled = false; btn.textContent = "Enviar inscrição";
+    }
+  }
+
   const lastEnd = () => SESS.length ? Math.max(...SESS.map(x => +x.end)) : 0;
 
   /* ---------- planilha (CSV/TSV) ---------- */
@@ -196,7 +271,7 @@
     if (s.acessibilidade) tags.push(`<span class="tag">${esc(s.acessibilidade)}</span>`);
     const su = signup(s), ended = st && st.k === "past";
     if (su && su.senha && !ended) tags.push(`<span class="tag">Senha no local</span>`);
-    const cta = su && su.link && !ended ? `<a class="cta" href="${esc(su.link)}" target="_blank" rel="noopener">${esc(su.rotulo)} <span aria-hidden="true">↗</span></a>` : "";
+    const cta = ended || !su ? "" : ctaHtml(s, su, "");
     return `<article class="card${st && st.k === "past" ? " past" : ""}${st && st.k === "live" ? " live" : ""}" style="--c:${trilhaColor(s.trilhas[0])}">
       <div class="time">${hfmt(s.inicio)}${s.fim ? `<small>até ${hfmt(s.fim)}</small>` : ""}</div>
       <div class="body"><button class="open" data-open="${esc(s.id)}"><span class="kind">${esc(s.tipo)}</span><span class="title">${esc(s.titulo)}</span>${s.com ? `<span class="who">${esc(s.com)}</span>` : ""}<span class="who">${esc(s.local)}</span></button><div class="tags">${tags.join("")}</div>${cta}</div>
@@ -292,7 +367,7 @@
       <div class="facts">${fact("Local", s.local)}${fact("Entrada", s.entrada)}${fact("Classificação", s.classificacao)}${fact("Acessibilidade", s.acessibilidade)}${fact("Como participar", s.como_participar)}${fact("Trilhas", s.trilhas.join(", "))}</div>
       <div class="facts"><span class="kind">${list.length > 1 ? "Todas as datas" : "Data"}</span>
         <div class="occ">${list.map(o => `<span class="${n >= o.start && n < o.end ? "now" : ""}">${fmtDay(o.data)} · ${o.inicio}${o.fim ? "–" + o.fim : ""}${n >= o.end ? " · encerrada" : ""}</span>`).join("")}</div></div>
-      ${(() => { const su = signup(s); if (!su || n >= list[list.length - 1].end) return ""; return su.link ? `<a class="cta big" href="${esc(su.link)}" target="_blank" rel="noopener">${esc(su.rotulo)} <span aria-hidden="true">↗</span></a>` : `<p class="hint" style="margin:0">Sem inscrição prévia: retire sua senha no local, ${esc(s.como_participar.replace(/^retirada de senhas?\s*/i, ""))}.</p>`; })()}
+      ${(() => { const su = signup(s); if (!su || n >= list[list.length - 1].end) return ""; return su.link || su.form ? ctaHtml(s, su, " big") : `<p class="hint" style="margin:0">Sem inscrição prévia: retire sua senha no local, ${esc(s.como_participar.replace(/^retirada de senhas?\s*/i, ""))}.</p>`; })()}
       <div class="row"><button class="ghost" data-star="${esc(s.id)}" aria-pressed="${favs.has(s.id)}">${favs.has(s.id) ? "★ Nos favoritos" : "☆ Adicionar aos favoritos"}</button></div>
     </div></div>`;
     el.hidden = false; el.querySelector(".close").focus();
@@ -311,20 +386,22 @@
     document.addEventListener("click", e => {
       const bg = e.target.closest("[data-bg]"); if (bg && e.target === bg) { closeSheet(); return; }
       const ar = e.target.closest("[data-area]"); if (ar) { openArea(ar.dataset.area); return; }
-      const t = e.target.closest("[data-dia],[data-trilha],[data-fav],[data-star],[data-open],[data-local],[data-act]"); if (!t) return;
+      const t = e.target.closest("[data-dia],[data-trilha],[data-fav],[data-star],[data-open],[data-inscrever],[data-local],[data-act]"); if (!t) return;
       const d = t.dataset;
       if (d.dia) state.dia = d.dia;
       else if (d.trilha) state.trilha = d.trilha;
       else if (d.fav) state.fav = d.fav === "1";
       else if (d.star) { favs.has(d.star) ? favs.delete(d.star) : favs.add(d.star); store.set("favs", [...favs]); if (!document.getElementById("sheet").hidden) openSheet(d.star); }
       else if (d.open) { openSheet(d.open); return; }
+      else if (d.inscrever) { openForm(d.inscrever); return; }
       else if (d.local) { closeSheet(); state.local = d.local; state.dia = "todos"; state.past = true; if (location.hash !== "#programacao") { location.hash = "programacao"; return; } }
       else if (d.act === "past") state.past = !state.past;
       else if (d.act === "clearlocal") state.local = null;
       else if (d.act === "close") { closeSheet(); return; }
       render();
     });
-    document.addEventListener("input", e => { if (e.target.id === "q") { state.q = e.target.value; render(); } });
+    document.addEventListener("submit", e => { if (e.target.id === "fins") { e.preventDefault(); sendForm(e.target); } });
+    document.addEventListener("input", e => { if (e.target.closest && e.target.closest("#fins")) { const b = document.getElementById("fi-err"); if (b) b.hidden = true; } if (e.target.id === "q") { state.q = e.target.value; render(); } });
     document.addEventListener("keydown", e => { if (e.key === "Escape") closeSheet(); if ((e.key === "Enter" || e.key === " ") && e.target.dataset && e.target.dataset.area) { e.preventDefault(); openArea(e.target.dataset.area); } });
     window.addEventListener("hashchange", () => { route(); window.scrollTo(0, 0); });
   }

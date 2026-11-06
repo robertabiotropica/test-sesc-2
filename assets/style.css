@@ -171,3 +171,9 @@ svg.mapa .sala:focus-visible rect{stroke:var(--ink)}
 .lg.hoje{border:2px solid var(--accent);background:var(--surface)}
 .lg.live{border:2px solid var(--live);background:var(--live-soft)}
 @media (prefers-reduced-motion:no-preference){svg.mapa .m-dot{animation:blink 1.6s ease-in-out infinite}}
+
+button.cta{border:0;cursor:pointer;font-family:inherit}
+.cta.done{background:var(--ok-soft);color:var(--ok);cursor:default}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.consent{font-size:14px;color:var(--ink)}
+.consent input{margin-top:3px;width:18px;height:18px;flex:none;accent-color:var(--accent)}

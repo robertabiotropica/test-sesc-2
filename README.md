@@ -71,6 +71,19 @@ No `evento.json`, o bloco `"inscricao"` define o texto do botão e o link padrã
 
 O bloco `"mapa"` do `evento.json` desenha a aba Mapa. Cada item de `"areas"` é uma sala: posição (`x`, `y`), tamanho (`w`, `h`), nome e os `locais` da planilha que pertencem a ela. As salas acendem quando há atividade agora ou no dia. Sem o bloco `"mapa"`, a aba não aparece.
 
+### Formulário de inscrição
+
+Quando `inscricao.endpoint` está preenchido no `evento.json`, o botão "Inscreva-se" abre um formulário no próprio site (nome, e-mail, telefone, faixa etária, acessibilidade e aceite da LGPD). Cada envio vira uma linha numa planilha do Google. Com o campo vazio, o botão leva ao link de `inscricao.link`.
+
+Para criar a planilha que recebe as inscrições:
+
+1. Crie uma planilha nova no Google Sheets.
+2. Vá em **Extensões → Apps Script**, apague o conteúdo e cole o arquivo `integracoes/inscricoes.gs`. Salve.
+3. Clique em **Implantar → Nova implantação**, escolha o tipo **App da Web**, com "Executar como: Eu" e "Quem pode acessar: Qualquer pessoa". Implante e autorize.
+4. Copie o **URL do app da Web** (termina em `/exec`) e cole em `inscricao.endpoint`.
+
+As inscrições aparecem na aba "Inscrições" da planilha. Um mesmo e-mail não é registrado duas vezes na mesma atividade.
+
 ## Criar um novo evento
 
 1. Copie a pasta `eventos/sesc-sorocaba-2026-11` com um novo código, por exemplo `eventos/festival-2027`. Use só letras minúsculas, números e hífens.
