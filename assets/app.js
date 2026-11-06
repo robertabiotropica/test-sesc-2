@@ -101,7 +101,7 @@
       <div class="row"><button type="submit" class="primary" id="fi-go">Enviar inscrição</button></div>
       ${s.como_participar ? `<p class="hint" style="margin:0">${esc(s.como_participar)}</p>` : ""}
     </form></div>`;
-    el.hidden = false; document.getElementById("fi-nome").focus();
+    showSheet(el, "#fi-nome");
   }
   async function sendForm(form) {
     const s = SESS.find(x => x.id === form.dataset.sid); if (!s) return;
@@ -205,9 +205,10 @@
     const q = state.q.trim().toLowerCase(), n = now();
     return SESS.filter(s => {
       if (state.trilha !== "all" && !s.trilhas.includes(state.trilha)) return false;
-      if (state.fav && !favs.has(s.id)) return false;
+      const favMode = state.tab === "favoritos";
+      if (favMode && !favs.has(s.id)) return false;
       if (state.local && s.local !== state.local) return false;
-      if (state.dia !== "todos" && s.data !== state.dia) return false;
+      if (!favMode && state.dia !== "todos" && s.data !== state.dia) return false;
       if (q && !(s.titulo + " " + (s.com||"") + " " + (s.tipo||"") + " " + (s.local||"") + " " + (s.descricao||"")).toLowerCase().includes(q)) return false;
       if (!ignorePast && !state.past && n >= s.end) return false;
       return true;
@@ -215,7 +216,15 @@
   }
 
   /* ---------- telas ---------- */
-  const TABS = [["programacao","Programação"],["mapa","Mapa"],["em-cartaz","Em cartaz"],["locais","Locais"],["info","Informações"]];
+  const TABS = [["programacao","Programação"],["mapa","Mapa"],["favoritos","Favoritos"],["em-cartaz","Em cartaz"],["locais","Locais"],["info","Informações"]];
+  const ICONS = {
+    programacao: '<path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/><path d="M8 13h3M8 16.5h6"/>',
+    mapa: '<path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0C18.5 15.4 12 21 12 21Z"/><circle cx="12" cy="10" r="2.4"/>',
+    favoritos: '<path d="m12 3.6 2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.2-4.1 5.8-.8L12 3.6Z"/>',
+    "em-cartaz": '<path d="M4 8a2 2 0 0 0 0 4v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4a2 2 0 0 1 0-4V6a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v2Z"/><path d="M14 5v12" stroke-dasharray="2 2.2"/>',
+    info: '<circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5M12 7.6v.2"/>'
+  };
+  const NAV_LABEL = {programacao: "Agenda", mapa: "Mapa", favoritos: "Favoritos", "em-cartaz": "Em cartaz", info: "Info"};
   function shell() {
     const tabs = TABS.filter(([id]) => id !== "mapa" || CFG.mapa).filter(([id]) => id !== "em-cartaz" || (CFG.emcartaz || []).length).filter(([id]) => id !== "info" || (CFG.info || []).length);
     document.getElementById("root").innerHTML = `
@@ -226,6 +235,8 @@
         <div class="meta">${[E().periodo && `<span><b>${esc(E().periodo)}</b></span>`, E().local && `<span>${esc(E().local)}</span>`, E().funcionamento && `<span>${esc(E().funcionamento)}</span>`].filter(Boolean).join("")}</div>
       </div></header>
       <nav class="tabs" aria-label="Seções"><div class="wrap">${tabs.map(([id, l]) => `<a href="#${id}" data-tab="${id}">${l}</a>`).join("")}</div></nav>
+      <nav class="bottom-nav" aria-label="Navegação principal">${tabs.filter(([id]) => NAV_LABEL[id]).map(([id]) => `<a href="#${id}" data-tab="${id}"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[id]}</svg>${id === "favoritos" ? '<span class="nb" id="favcount" hidden></span>' : ""}</span><span>${NAV_LABEL[id]}</span></a>`).join("")}</nav>
+      <button class="fab" id="fab" data-act="agora" hidden><span class="dot" style="--c:var(--live)"></span>Agora</button>
       <main><div class="wrap" id="view"></div></main>
       <footer>${esc(window.ROTEIRO_CREDITO || "Feito com Roteiro")}</footer>
       <div id="sheet" hidden></div>`;
@@ -237,14 +248,14 @@
     const tISO = todayISO(), n = now(), over = SESS.length && +n > lastEnd();
     const counts = {}; SESS.forEach(s => s.trilhas.forEach(t => counts[t] = (counts[t] || 0) + 1));
     const fech = E().fechados || [];
-    let days = `<button class="day wide" data-dia="todos" aria-pressed="${state.dia === "todos"}"><span class="d" style="font-size:15px">Todos</span></button>`;
+    let days = `<button class="day wide" data-dia="todos" aria-pressed="${state.dia === "todos"}"><span class="d" style="font-size:.9375rem">Todos</span></button>`;
     dayList().forEach(d => { const c = fech.includes(d); days += `<button class="day${c ? " closed" : ""}${d === tISO ? " today" : ""}" data-dia="${d}" aria-pressed="${state.dia === d}" aria-label="${fmtDay(d)}"><span class="wd">${wd(d)}</span><span class="d">${+d.slice(8)}</span><span class="tg">${d === tISO ? "hoje" : c ? "fechado" : ""}</span></button>`; });
     let chips = `<button class="chip" data-trilha="all" aria-pressed="${state.trilha === "all"}">Todas <span class="n">${SESS.length}</span></button>`;
     CFG.trilhas.forEach(t => chips += `<button class="chip" data-trilha="${esc(t)}" aria-pressed="${state.trilha === t}"><span class="dot" style="--c:${trilhaColor(t)}"></span>${esc(t)} <span class="n">${counts[t] || 0}</span></button>`);
     let body = "";
     if (over) body += `<div class="banner"><b>Programação encerrada.</b> ${esc(E().mensagem_final || "Obrigado pela participação.")}</div>`;
-    if (state.dia !== "todos" && fech.includes(state.dia)) body += `<div class="empty">Fechado neste dia.</div>`;
-    else if (!list.length) body += `<div class="empty">${state.fav && !favs.size ? "Toque na estrela de uma sessão para guardá-la aqui." : "Nenhuma sessão com esses filtros."}</div>`;
+    if (state.tab !== "favoritos" && state.dia !== "todos" && fech.includes(state.dia)) body += `<div class="empty">Fechado neste dia.</div>`;
+    else if (!list.length) body += `<div class="empty">${state.tab === "favoritos" && !favs.size ? "Toque na estrela de uma sessão para guardá-la aqui." : "Nenhuma sessão com esses filtros."}</div>`;
     else {
       const g = {}; list.forEach(s => (g[s.data] = g[s.data] || []).push(s));
       Object.keys(g).sort().forEach(d => body += `<section class="group"><h2 class="gh">${fmtDay(d)}${d === tISO ? '<span class="today">Hoje</span>' : ""}</h2>${g[d].map(card).join("")}</section>`);
@@ -254,9 +265,8 @@
     return `<div class="tools">
       <div class="row">
         <label class="search"><span aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Buscar atividade, artista ou local" value="${esc(state.q)}" aria-label="Buscar"></label>
-        <div class="seg" role="group" aria-label="Mostrar"><button data-fav="0" aria-pressed="${!state.fav}">Todas</button><button data-fav="1" aria-pressed="${state.fav}">★ Favoritos (${favs.size})</button></div>
       </div>
-      <div class="days" role="group" aria-label="Dia">${days}</div>
+      ${state.tab === "favoritos" ? `<h2 class="gh" style="margin:0">Seus favoritos</h2>` : `<div class="days" role="group" aria-label="Dia">${days}</div>`}
       <div class="scroller" role="group" aria-label="Trilha">${chips}</div>
       ${state.local ? `<div class="row"><span class="chip" aria-pressed="true">Local: ${esc(state.local)}</span><button class="ghost" data-act="clearlocal">Limpar local</button></div>` : ""}
       <div class="status"><span class="pulse"></span>Atualiza sozinho · atualizado às ${fmtT(lastSheetOk || n)}</div>
@@ -266,7 +276,7 @@
     const st = status(s), tags = [];
     if (st && st.k !== "past") tags.push(`<span class="tag ${st.k}">${st.l}</span>`);
     s.trilhas.forEach(t => tags.push(`<span class="tag"><span class="dot" style="--c:${trilhaColor(t)}"></span>${esc(t)}</span>`));
-    if (s.entrada) tags.push(`<span class="tag">${/gr[aá]tis/i.test(s.entrada) ? "Grátis" : "Pago"}</span>`);
+    if (s.entrada) tags.push(`<span class="tag">${/gr[aá]t(is|uit)/i.test(s.entrada) ? "Grátis" : "Pago"}</span>`);
     if (s.classificacao) tags.push(`<span class="tag">${esc(s.classificacao)}</span>`);
     if (s.acessibilidade) tags.push(`<span class="tag">${esc(s.acessibilidade)}</span>`);
     const su = signup(s), ended = st && st.k === "past";
@@ -333,6 +343,7 @@
         <div class="mapa-wrap">${svg}</div>
         ${M.aviso ? `<p class="hint">${esc(M.aviso)}</p>` : ""}</div>
       <div class="panel"><h2>Acontecendo agora</h2>${live.length ? `<div class="list">${live.map(s => `<div class="li"><span><span class="kind">${esc(s.local)}</span><br>${esc(s.titulo)}</span><button class="go" data-open="${esc(s.id)}">Ver →</button></div>`).join("")}</div>` : `<p class="hint">Nada acontecendo neste momento.</p>`}</div>
+      <a class="ghost" href="#locais" style="text-align:center;text-decoration:none;color:var(--ink)">Ver lista de todos os locais</a>
       ${ext ? `<div class="panel"><h2>Fora da unidade</h2><div class="list">${ext}</div></div>` : ""}`;
   }
   function openArea(nome) {
@@ -346,7 +357,7 @@
       ${st.next.length ? `<div><span class="kind">A seguir, hoje</span><div class="list">${st.next.map(item).join("")}</div></div>` : st.today.length ? `<p class="hint" style="margin:0">Não há mais atividades aqui hoje.</p>` : `<p class="hint" style="margin:0">Nenhuma atividade programada aqui hoje.</p>`}
       ${a.locais.some(l => SESS.some(s => s.local === l)) ? `<div class="row"><button class="ghost" data-local="${esc(a.locais[0])}">Ver toda a programação deste local</button></div>` : ""}
     </div></div>`;
-    el.hidden = false; el.querySelector(".close").focus();
+    showSheet(el);
   }
 
   function renderInfo() {
@@ -370,21 +381,66 @@
       ${(() => { const su = signup(s); if (!su || n >= list[list.length - 1].end) return ""; return su.link || su.form ? ctaHtml(s, su, " big") : `<p class="hint" style="margin:0">Sem inscrição prévia: retire sua senha no local, ${esc(s.como_participar.replace(/^retirada de senhas?\s*/i, ""))}.</p>`; })()}
       <div class="row"><button class="ghost" data-star="${esc(s.id)}" aria-pressed="${favs.has(s.id)}">${favs.has(s.id) ? "★ Nos favoritos" : "☆ Adicionar aos favoritos"}</button></div>
     </div></div>`;
-    el.hidden = false; el.querySelector(".close").focus();
+    showSheet(el);
   }
-  function closeSheet() { const el = document.getElementById("sheet"); if (el) { el.hidden = true; el.innerHTML = ""; } }
+  let lastFocus = null;
+  function showSheet(el, focusSel) {
+    if (el.hidden) lastFocus = document.activeElement;
+    el.hidden = false;
+    const sh = el.querySelector(".sheet");
+    if (sh && !sh.querySelector(".grab")) sh.insertAdjacentHTML("afterbegin", '<div class="grab" aria-hidden="true"></div>');
+    if (!(history.state && history.state.sheet)) history.pushState({sheet: true}, "");
+    document.body.classList.add("sheet-open");
+    const f = el.querySelector(focusSel || ".close"); if (f) f.focus();
+    if (sh) dragToClose(sh);
+  }
+  function dragToClose(sh) {
+    let y0 = null, dy = 0;
+    sh.addEventListener("touchstart", e => { y0 = sh.scrollTop <= 0 ? e.touches[0].clientY : null; dy = 0; }, {passive: true});
+    sh.addEventListener("touchmove", e => { if (y0 == null) return; dy = e.touches[0].clientY - y0; if (dy > 0) { sh.style.transform = `translateY(${dy}px)`; sh.style.transition = "none"; } }, {passive: true});
+    sh.addEventListener("touchend", () => { if (y0 == null) return; sh.style.transition = ""; if (dy > 110) closeSheet(); else sh.style.transform = ""; y0 = null; });
+  }
+  function closeSheet(opts) {
+    opts = opts || {};
+    const el = document.getElementById("sheet"); if (!el || el.hidden) return;
+    el.hidden = true; el.innerHTML = ""; document.body.classList.remove("sheet-open");
+    if (!opts.fromPop && history.state && history.state.sheet) { if (opts.replace) history.replaceState(null, ""); else history.back(); }
+    if (lastFocus && document.contains(lastFocus) && !opts.replace) lastFocus.focus();
+    lastFocus = null;
+  }
 
   function render() {
-    document.querySelectorAll("nav.tabs a").forEach(a => a.setAttribute("aria-current", a.dataset.tab === state.tab ? "page" : "false"));
+    document.querySelectorAll("nav.tabs a, .bottom-nav a").forEach(a => a.setAttribute("aria-current", a.dataset.tab === state.tab ? "page" : "false"));
+    const fc = document.getElementById("favcount"); if (fc) { fc.hidden = !favs.size; fc.textContent = favs.size; }
     const v = document.getElementById("view"), ae = document.activeElement, keep = ae && ae.id === "q", pos = keep ? ae.selectionStart : 0;
     v.innerHTML = state.tab === "mapa" && CFG.mapa ? renderMapa() : state.tab === "em-cartaz" ? renderCartaz() : state.tab === "locais" ? renderLocais() : state.tab === "info" ? renderInfo() : renderProg();
     if (keep) { const q = document.getElementById("q"); q.focus(); q.setSelectionRange(pos, pos); }
+    const strip = v.querySelector(".days"), sel = strip && strip.querySelector('[aria-pressed="true"]');
+    if (strip && sel) strip.scrollLeft = sel.offsetLeft - strip.offsetLeft - strip.clientWidth / 2 + sel.clientWidth / 2;
+    updateFab();
+  }
+  function homeDay() {
+    const t = todayISO();
+    return dayList().includes(t) && !(E().fechados || []).includes(t) && SESS.some(s => s.data === t && now() < s.end) ? t : "todos";
+  }
+  function updateFab() {
+    const fab = document.getElementById("fab"); if (!fab) return;
+    const away = state.dia !== homeDay() || state.trilha !== "all" || !!state.local || !!state.q;
+    fab.hidden = !(state.tab === "programacao" && (away || window.scrollY > 900));
+  }
+  function goNow() {
+    state.dia = homeDay(); state.trilha = "all"; state.local = null; state.q = ""; state.past = false;
+    if (location.hash && location.hash !== "#programacao") { location.hash = "programacao"; return; }
+    state.tab = "programacao"; render();
+    const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const tools = document.querySelector(".tools"); if (tools) window.scrollTo({top: Math.max(0, tools.getBoundingClientRect().top + window.scrollY - 12), behavior: reduce ? "auto" : "smooth"});
   }
   function route() { const h = location.hash.slice(1); state.tab = TABS.some(t => t[0] === h) ? h : "programacao"; render(); }
 
   function bind() {
     document.addEventListener("click", e => {
       const bg = e.target.closest("[data-bg]"); if (bg && e.target === bg) { closeSheet(); return; }
+      if (e.target.closest('[data-act="agora"]')) { goNow(); return; }
       const ar = e.target.closest("[data-area]"); if (ar) { openArea(ar.dataset.area); return; }
       const t = e.target.closest("[data-dia],[data-trilha],[data-fav],[data-star],[data-open],[data-inscrever],[data-local],[data-act]"); if (!t) return;
       const d = t.dataset;
@@ -394,7 +450,7 @@
       else if (d.star) { favs.has(d.star) ? favs.delete(d.star) : favs.add(d.star); store.set("favs", [...favs]); if (!document.getElementById("sheet").hidden) openSheet(d.star); }
       else if (d.open) { openSheet(d.open); return; }
       else if (d.inscrever) { openForm(d.inscrever); return; }
-      else if (d.local) { closeSheet(); state.local = d.local; state.dia = "todos"; state.past = true; if (location.hash !== "#programacao") { location.hash = "programacao"; return; } }
+      else if (d.local) { closeSheet({replace: true}); state.local = d.local; state.dia = "todos"; state.past = true; if (location.hash !== "#programacao") { location.hash = "programacao"; return; } }
       else if (d.act === "past") state.past = !state.past;
       else if (d.act === "clearlocal") state.local = null;
       else if (d.act === "close") { closeSheet(); return; }
@@ -403,7 +459,10 @@
     document.addEventListener("submit", e => { if (e.target.id === "fins") { e.preventDefault(); sendForm(e.target); } });
     document.addEventListener("input", e => { if (e.target.closest && e.target.closest("#fins")) { const b = document.getElementById("fi-err"); if (b) b.hidden = true; } if (e.target.id === "q") { state.q = e.target.value; render(); } });
     document.addEventListener("keydown", e => { if (e.key === "Escape") closeSheet(); if ((e.key === "Enter" || e.key === " ") && e.target.dataset && e.target.dataset.area) { e.preventDefault(); openArea(e.target.dataset.area); } });
-    window.addEventListener("hashchange", () => { route(); window.scrollTo(0, 0); });
+    window.addEventListener("hashchange", () => { if (!document.getElementById("sheet").hidden) closeSheet({fromPop: true}); route(); window.scrollTo(0, 0); });
+    window.addEventListener("popstate", () => { if (!document.getElementById("sheet").hidden) closeSheet({fromPop: true}); });
+    let ticking = false;
+    window.addEventListener("scroll", () => { if (ticking) return; ticking = true; requestAnimationFrame(() => { updateFab(); ticking = false; }); }, {passive: true});
   }
 
   function fail(msg) {
@@ -424,6 +483,7 @@
     favs = new Set(store.get("favs", []));
     const fromSheet = await loadSheet();
     if (!fromSheet) SESS = buildSessions(CFG.sessoes || []);
+    state.dia = homeDay();
     shell(); bind(); route();
     setInterval(() => { if ((state.tab === "programacao" || state.tab === "mapa") && document.getElementById("sheet").hidden) render(); }, REFRESH_UI_MS);
     if (CFG.planilha_csv) setInterval(async () => { if (await loadSheet() && document.getElementById("sheet").hidden) render(); }, REFRESH_SHEET_MS);
