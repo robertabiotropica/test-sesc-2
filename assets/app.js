@@ -1,5 +1,6 @@
 /* Roteiro · motor da página de evento.
-   Lê /eventos/<slug>/evento.json e, se houver, a planilha publicada do Google Sheets (planilha_csv). */
+   Lê /eventos/<slug>/evento.json e, se houver, a aba "Programação" da planilha do evento
+   (pelo script em inscricao.endpoint) ou uma planilha publicada em CSV (planilha_csv). */
 (function () {
   "use strict";
 
@@ -19,7 +20,7 @@
   const hfmt = hm => hm ? hm.replace(":", "h").replace(/h00$/, "h") : "";
 
   /* ---------- estado ---------- */
-  let CFG = null, SESS = [], slug = null, lastSheetOk = null;
+  let CFG = null, SESS = [], slug = null, lastSheetOk = null, INSCRITOS = {}, offline = false;
   const E = () => CFG.evento;
   const tz = () => E().tz || "America/Sao_Paulo";
   const mk = (iso, hm) => new Date(`${iso}T${hm}:00${E().fuso || "-03:00"}`);
@@ -50,8 +51,9 @@
       const trilhas = Array.isArray(s.trilhas) ? s.trilhas : String(s.trilhas || "").split(/[;|]/).map(x => x.trim()).filter(Boolean);
       trilhas.forEach(t => { if (!CFG.trilhas.includes(t)) CFG.trilhas.push(t); });
       const atividade = s.atividade || slugify(s.titulo);
-      const id = s.id || `${atividade}-${s.data}-${s.inicio}`;
-      return {...s, id, atividade, trilhas, start, end};
+      const id = `${atividade}-${s.data}-${s.inicio}`;
+      const vagas = parseInt(s.vagas, 10) > 0 ? parseInt(s.vagas, 10) : 0;
+      return {...s, id, atividade, trilhas, start, end, vagas};
     }).sort((a, b) => a.start - b.start || a.titulo.localeCompare(b.titulo));
   }
   function signup(s) {
@@ -63,9 +65,15 @@
     if (/retirada de senha/i.test(txt)) return {senha: true};
     return null;
   }
+  const actId = s => `${slug}/${s.atividade}`;
+  function restantes(s) {
+    const vagas = Math.max(0, ...SESS.filter(x => x.atividade === s.atividade).map(x => x.vagas || 0));
+    return vagas > 0 ? Math.max(0, vagas - (INSCRITOS[actId(s)] || 0)) : null;
+  }
   function ctaHtml(s, su, extra) {
     if (su.form) {
       if (inscritas()[s.atividade]) return `<span class="cta done${extra}">Inscrição enviada ✓</span>`;
+      if (restantes(s) === 0) return `<span class="cta off${extra}">Vagas esgotadas</span>`;
       return `<button class="cta${extra}" data-inscrever="${esc(s.id)}">${esc(su.rotulo)}</button>`;
     }
     return su.link ? `<a class="cta${extra}" href="${esc(su.link)}" target="_blank" rel="noopener">${esc(su.rotulo)} <span aria-hidden="true">↗</span></a>` : "";
@@ -118,20 +126,24 @@
     box.hidden = true; btn.disabled = true; btn.textContent = "Enviando…";
     const list = SESS.filter(x => x.atividade === s.atividade);
     const payload = {...d, evento: E().nome, atividade: s.titulo, atividade_id: `${slug}/${s.atividade}`, local: s.local || "",
-      datas: list.map(o => `${o.data} ${o.inicio}${o.fim ? "-" + o.fim : ""}`).join("; "), origem: location.origin + location.pathname};
+      datas: list.map(o => `${o.data} ${o.inicio}${o.fim ? "-" + o.fim : ""}`).join("; "),
+      datas_texto: list.map(o => `${fmtDay(o.data)}, ${hfmt(o.inicio)}${o.fim ? " às " + hfmt(o.fim) : ""}`).join("; "),
+      como_participar: s.como_participar || "", link: shareUrl(s), origem: location.origin + location.pathname};
     try {
       const r = await fetch(CFG.inscricao.endpoint, {method: "POST", headers: {"Content-Type": "text/plain;charset=utf-8"}, body: JSON.stringify(payload)});
       const j = await r.json();
       if (!j.ok) throw j;
       store.set("contato", {nome: d.nome, email: d.email, telefone: d.telefone, faixa: d.faixa_etaria});
       const m = inscritas(); m[s.atividade] = true; store.set("inscricoes", m);
+      if (!j.repetida) INSCRITOS[actId(s)] = (INSCRITOS[actId(s)] || 0) + 1;
       form.innerHTML = `<button type="button" class="close" data-act="close">Fechar</button>
         <span class="kind">Inscrição</span><h2>${j.repetida ? "Você já estava inscrito" : "Inscrição recebida"}</h2>
         <div class="okmsg">${j.repetida ? `Já existe uma inscrição com o e-mail ${esc(d.email)} em "${esc(s.titulo)}". Não é preciso enviar de novo.` : `Sua inscrição em "${esc(s.titulo)}" foi registrada para ${esc(d.nome)}.`}</div>
         <p class="hint" style="margin:0">${esc(CFG.inscricao.mensagem_sucesso || "Se precisar, a organização entra em contato pelo e-mail ou telefone informados.")}</p>`;
       render();
     } catch (err) {
-      box.textContent = err && err.erro === "dados_invalidos" ? "Algum dado não foi aceito. Confira nome, e-mail e telefone." : "Não foi possível enviar agora. Confira sua conexão e tente de novo.";
+      if (err && err.erro === "esgotado") { const v = Math.max(0, ...list.map(x => x.vagas || 0)); INSCRITOS[actId(s)] = Math.max(INSCRITOS[actId(s)] || 0, v); render(); }
+      box.textContent = err && err.erro === "esgotado" ? "As vagas desta atividade acabaram de esgotar." : err && err.erro === "dados_invalidos" ? "Algum dado não foi aceito. Confira nome, e-mail e telefone." : !navigator.onLine ? "Você está sem internet. Conecte-se e tente de novo." : "Não foi possível enviar agora. Confira sua conexão e tente de novo.";
       box.hidden = false; btn.disabled = false; btn.textContent = "Enviar inscrição";
     }
   }
@@ -156,7 +168,7 @@
     return rows.filter(r => r.some(v => v.trim() !== ""));
   }
   const norm = s => String(s).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().trim().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "");
-  const ALIAS = {titulo:"titulo",title:"titulo",nome:"titulo",atividade:"atividade",codigo:"atividade",tipo:"tipo",formato:"tipo",trilha:"trilhas",trilhas:"trilhas",com:"com",artistas:"com",creditos:"com",descricao:"descricao",local:"local",espaco:"local",data:"data",dia:"data",inicio:"inicio",hora:"inicio",horario:"inicio",fim:"fim",termino:"fim",entrada:"entrada",preco:"entrada",classificacao:"classificacao",idade:"classificacao",acessibilidade:"acessibilidade",como_participar:"como_participar",inscricao:"como_participar",link_inscricao:"link_inscricao",link:"link_inscricao",obs:"como_participar",observacoes:"como_participar",id:"id"};
+  const ALIAS = {titulo:"titulo",title:"titulo",nome:"titulo",atividade:"atividade",codigo:"atividade",tipo:"tipo",formato:"tipo",trilha:"trilhas",trilhas:"trilhas",com:"com",artistas:"com",creditos:"com",descricao:"descricao",local:"local",espaco:"local",data:"data",dia:"data",inicio:"inicio",hora:"inicio",horario:"inicio",fim:"fim",termino:"fim",entrada:"entrada",preco:"entrada",classificacao:"classificacao",idade:"classificacao",acessibilidade:"acessibilidade",como_participar:"como_participar",inscricao:"como_participar",link_inscricao:"link_inscricao",link:"link_inscricao",vagas:"vagas",obs:"como_participar",observacoes:"como_participar",id:"id"};
   function normDate(v) {
     v = String(v).trim(); let m;
     if ((m = v.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/))) return `${m[1]}-${pad(m[2])}-${pad(m[3])}`;
@@ -190,6 +202,66 @@
       SESS = buildSessions(rows); lastSheetOk = new Date();
       return true;
     } catch (e) { console.warn("Planilha indisponível, usando dados do evento.json", e); return false; }
+  }
+
+  function rowsFromObjects(list) {
+    return (list || []).map(r => {
+      const o = {};
+      Object.keys(r).forEach(k => { const key = ALIAS[norm(k)]; if (key) o[key] = String(r[k] == null ? "" : r[k]).trim(); });
+      o.data = normDate(o.data || ""); o.inicio = normTime(o.inicio || ""); o.fim = normTime(o.fim || "");
+      return o;
+    });
+  }
+  // aba "Programação" da planilha, entregue pelo script do evento
+  async function loadRemote() {
+    const ep = CFG.inscricao && CFG.inscricao.endpoint;
+    if (!ep) return false;
+    try {
+      const r = await fetch(ep + (ep.includes("?") ? "&" : "?") + "acao=programacao");
+      const j = await r.json();
+      offline = false;
+      if (j.inscritos) INSCRITOS = j.inscritos;
+      if (!j.ok || !Array.isArray(j.sessoes) || !j.sessoes.length) return false;
+      const rows = rowsFromObjects(j.sessoes), built = buildSessions(rows);
+      if (!built.length) return false;
+      SESS = built; lastSheetOk = new Date();
+      store.set("cache", {rows, inscritos: INSCRITOS, at: lastSheetOk.toISOString()});
+      return true;
+    } catch (e) { offline = true; return false; }
+  }
+
+  /* ---------- agenda e compartilhamento ---------- */
+  const shareUrl = s => `${location.origin}/e/${slug}#a-${s.atividade}`;
+  const gcalDate = d => d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+  function gcalLink(s) {
+    const p = new URLSearchParams({action: "TEMPLATE", text: s.titulo, dates: `${gcalDate(s.start)}/${gcalDate(s.end)}`,
+      details: [s.com, s.descricao, s.como_participar, shareUrl(s)].filter(Boolean).join("\n\n"), location: [s.local, E().nome].filter(Boolean).join(" · ")});
+    return "https://calendar.google.com/calendar/render?" + p.toString();
+  }
+  function icsFor(s) {
+    const list = SESS.filter(x => x.atividade === s.atividade), stamp = gcalDate(new Date());
+    const t = v => String(v || "").replace(/\\/g, "\\\\").replace(/[,;]/g, m => "\\" + m).replace(/\r?\n/g, "\\n");
+    const ev = list.map(o => ["BEGIN:VEVENT", `UID:${o.id}@${location.host}`, `DTSTAMP:${stamp}`, `DTSTART:${gcalDate(o.start)}`, `DTEND:${gcalDate(o.end)}`,
+      `SUMMARY:${t(o.titulo)}`, `LOCATION:${t([o.local, E().nome].filter(Boolean).join(" · "))}`, `DESCRIPTION:${t([o.com, o.descricao, o.como_participar].filter(Boolean).join("\n\n"))}`,
+      `URL:${shareUrl(o)}`, "BEGIN:VALARM", "TRIGGER:-PT1H", "ACTION:DISPLAY", `DESCRIPTION:${t(o.titulo)}`, "END:VALARM", "END:VEVENT"].join("\r\n"));
+    return ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Roteiro//PT-BR", "CALSCALE:GREGORIAN", ...ev, "END:VCALENDAR"].join("\r\n");
+  }
+  function downloadIcs(s) {
+    const blob = new Blob([icsFor(s)], {type: "text/calendar;charset=utf-8"}), a = document.createElement("a");
+    a.href = URL.createObjectURL(blob); a.download = `${s.atividade}.ics`; document.body.appendChild(a); a.click();
+    setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+    toast("Arquivo de calendário baixado. Abra-o para salvar na sua agenda.");
+  }
+  async function share(s) {
+    const data = {title: s.titulo, text: `${s.titulo} · ${fmtDay(s.data)}, ${hfmt(s.inicio)} · ${s.local || ""}`, url: shareUrl(s)};
+    if (navigator.share) { try { await navigator.share(data); return; } catch (e) { if (e && e.name === "AbortError") return; } }
+    try { await navigator.clipboard.writeText(data.url); toast("Link copiado. É só colar onde quiser enviar."); }
+    catch (e) { toast(data.url); }
+  }
+  let toastTimer = null;
+  function toast(msg) {
+    const t = document.getElementById("toast"); if (!t) return;
+    t.textContent = msg; t.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.hidden = true; }, 3500);
   }
 
   /* ---------- filtros ---------- */
@@ -236,6 +308,7 @@
       </div></header>
       <nav class="tabs" aria-label="Seções"><div class="wrap">${tabs.map(([id, l]) => `<a href="#${id}" data-tab="${id}">${l}</a>`).join("")}</div></nav>
       <nav class="bottom-nav" aria-label="Navegação principal">${tabs.filter(([id]) => NAV_LABEL[id]).map(([id]) => `<a href="#${id}" data-tab="${id}"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[id]}</svg>${id === "favoritos" ? '<span class="nb" id="favcount" hidden></span>' : ""}</span><span>${NAV_LABEL[id]}</span></a>`).join("")}</nav>
+      <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
       <button class="fab" id="fab" data-act="agora" hidden><span class="dot" style="--c:var(--live)"></span>Agora</button>
       <main><div class="wrap" id="view"></div></main>
       <footer>${esc(window.ROTEIRO_CREDITO || "Feito com Roteiro")}</footer>
@@ -271,7 +344,7 @@
       ${state.tab === "favoritos" ? `<h2 class="gh" style="margin:0">Seus favoritos</h2>` : `<div class="days" role="group" aria-label="Dia">${days}</div>`}
       <div class="scroller" role="group" aria-label="Trilha">${chips}</div>
       ${state.local ? `<div class="row"><span class="chip" aria-pressed="true">Local: ${esc(state.local)}</span><button class="ghost" data-act="clearlocal">Limpar local</button></div>` : ""}
-      <div class="status"><span class="pulse"></span>Atualiza sozinho · atualizado às ${fmtT(lastSheetOk || n)}</div>
+      <div class="status" role="status">${offline && !navigator.onLine ? `<span class="pulse off"></span>Sem internet · mostrando a última versão salva${lastSheetOk ? ` (${fmtT(lastSheetOk)})` : ""}` : `<span class="pulse"></span>Atualiza sozinho · atualizado às ${fmtT(lastSheetOk || n)}`}</div>
     </div>${body}`;
   }
   function card(s) {
@@ -283,6 +356,8 @@
     if (s.acessibilidade) tags.push(`<span class="tag">${esc(s.acessibilidade)}</span>`);
     const su = signup(s), ended = st && st.k === "past";
     if (su && su.senha && !ended) tags.push(`<span class="tag">Senha no local</span>`);
+    const rest = su && su.form && !ended ? restantes(s) : null;
+    if (rest !== null && rest > 0 && rest <= 5 && !inscritas()[s.atividade]) tags.push(`<span class="tag soon">${rest === 1 ? "Última vaga" : `Restam ${rest} vagas`}</span>`);
     const cta = ended || !su ? "" : ctaHtml(s, su, "");
     return `<article class="card${st && st.k === "past" ? " past" : ""}${st && st.k === "live" ? " live" : ""}" style="--c:${trilhaColor(s.trilhas[0])}">
       <div class="time">${hfmt(s.inicio)}${s.fim ? `<small>até ${hfmt(s.fim)}</small>` : ""}</div>
@@ -362,9 +437,26 @@
     showSheet(el);
   }
 
+  let installEvt = null;
+  window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); installEvt = e; if (state.tab === "info") render(); });
+  const standalone = () => (window.matchMedia && matchMedia("(display-mode: standalone)").matches) || navigator.standalone;
+  async function installApp() {
+    if (!installEvt) return;
+    installEvt.prompt(); const r = await installEvt.userChoice.catch(() => null); installEvt = null;
+    if (r && r.outcome === "accepted") toast("Pronto! O app está na sua tela inicial.");
+    render();
+  }
+  function installPanel() {
+    if (standalone()) return "";
+    const ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    const how = installEvt ? `<div class="row"><button class="primary" data-act="instalar">Instalar app</button></div>`
+      : ios ? `<p>No iPhone: toque em <b>Compartilhar</b> (o quadrado com a seta para cima) e depois em <b>Adicionar à Tela de Início</b>.</p>`
+      : `<p>No Android: abra o menu do navegador (⋮) e toque em <b>Instalar app</b> ou <b>Adicionar à tela inicial</b>.</p>`;
+    return `<div class="panel"><h2>Tenha a programação no celular</h2><p>Instale como app para abrir direto da tela inicial, em tela cheia e mesmo sem internet.</p>${how}</div>`;
+  }
   function renderInfo() {
     const link = t => esc(t).replace(/\b((?:https?:\/\/)?[a-z0-9.-]+\.(?:org|com|gov)(?:\.br)?(?:\/[^\s<]*)?)/gi, m => `<a href="${m.startsWith("http") ? m : "https://" + m}" target="_blank" rel="noopener">${m}</a>`);
-    return (CFG.info || []).map(b => `<div class="panel"><h2>${esc(b.titulo)}</h2><p class="pre">${link(b.texto)}</p></div>`).join("");
+    return installPanel() + (CFG.info || []).map(b => `<div class="panel"><h2>${esc(b.titulo)}</h2><p class="pre">${link(b.texto)}</p></div>`).join("");
   }
 
   function openSheet(id) {
@@ -381,7 +473,8 @@
       <div class="facts"><span class="kind">${list.length > 1 ? "Todas as datas" : "Data"}</span>
         <div class="occ">${list.map(o => `<span class="${n >= o.start && n < o.end ? "now" : ""}">${fmtDay(o.data)} · ${o.inicio}${o.fim ? "–" + o.fim : ""}${n >= o.end ? " · encerrada" : ""}</span>`).join("")}</div></div>
       ${(() => { const su = signup(s); if (!su || n >= list[list.length - 1].end) return ""; return su.link || su.form ? ctaHtml(s, su, " big") : `<p class="hint" style="margin:0">Sem inscrição prévia: retire sua senha no local, ${esc(s.como_participar.replace(/^retirada de senhas?\s*/i, ""))}.</p>`; })()}
-      <div class="row"><button class="ghost" data-star="${esc(s.id)}" aria-pressed="${favs.has(s.id)}">${favs.has(s.id) ? "★ Nos favoritos" : "☆ Adicionar aos favoritos"}</button></div>
+      <div class="row"><button class="ghost" data-star="${esc(s.id)}" aria-pressed="${favs.has(s.id)}">${favs.has(s.id) ? "★ Nos favoritos" : "☆ Adicionar aos favoritos"}</button><button class="ghost" data-share="${esc(s.id)}">Compartilhar</button></div>
+      ${n < s.end ? `<div class="agenda"><span class="kind">Adicionar à agenda</span><div class="row"><a class="ghost" href="${esc(gcalLink(s))}" target="_blank" rel="noopener">Google Agenda ↗</a><button class="ghost" data-ics="${esc(s.id)}">Outro calendário (.ics)</button></div></div>` : ""}
     </div></div>`;
     showSheet(el);
   }
@@ -437,14 +530,23 @@
     const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
     const tools = document.querySelector(".tools"); if (tools) window.scrollTo({top: Math.max(0, tools.getBoundingClientRect().top + window.scrollY - 12), behavior: reduce ? "auto" : "smooth"});
   }
-  function route() { const h = location.hash.slice(1); state.tab = TABS.some(t => t[0] === h) ? h : "programacao"; render(); }
+  function route() {
+    const h = location.hash.slice(1);
+    if (h.startsWith("a-")) {
+      const list = SESS.filter(x => x.atividade === h.slice(2)), n = now(), s = list.find(x => n < x.end) || list[0];
+      history.replaceState(null, "", "#programacao"); state.tab = "programacao"; render();
+      if (s) openSheet(s.id);
+      return;
+    }
+    state.tab = TABS.some(t => t[0] === h) ? h : "programacao"; render();
+  }
 
   function bind() {
     document.addEventListener("click", e => {
       const bg = e.target.closest("[data-bg]"); if (bg && e.target === bg) { closeSheet(); return; }
       if (e.target.closest('[data-act="agora"]')) { goNow(); return; }
       const ar = e.target.closest("[data-area]"); if (ar) { openArea(ar.dataset.area); return; }
-      const t = e.target.closest("[data-dia],[data-trilha],[data-fav],[data-star],[data-open],[data-inscrever],[data-local],[data-act]"); if (!t) return;
+      const t = e.target.closest("[data-dia],[data-trilha],[data-fav],[data-star],[data-open],[data-inscrever],[data-share],[data-ics],[data-local],[data-act]"); if (!t) return;
       const d = t.dataset;
       if (d.dia) state.dia = d.dia;
       else if (d.trilha) state.trilha = d.trilha;
@@ -452,6 +554,9 @@
       else if (d.star) { favs.has(d.star) ? favs.delete(d.star) : favs.add(d.star); store.set("favs", [...favs]); if (!document.getElementById("sheet").hidden) openSheet(d.star); }
       else if (d.open) { openSheet(d.open); return; }
       else if (d.inscrever) { openForm(d.inscrever); return; }
+      else if (d.share) { const x = SESS.find(o => o.id === d.share); if (x) share(x); return; }
+      else if (d.ics) { const x = SESS.find(o => o.id === d.ics); if (x) downloadIcs(x); return; }
+      else if (d.act === "instalar") { installApp(); return; }
       else if (d.local) { closeSheet({replace: true}); state.local = d.local; state.dia = "todos"; state.past = true; if (location.hash !== "#programacao") { location.hash = "programacao"; return; } }
       else if (d.act === "past") state.past = !state.past;
       else if (d.act === "clearlocal") state.local = null;
@@ -482,13 +587,23 @@
       CFG = await r.json();
     } catch (e) { return fail("Não encontramos esse evento."); }
     CFG.trilhas = CFG.trilhas || [];
-    favs = new Set(store.get("favs", []));
-    const fromSheet = await loadSheet();
-    if (!fromSheet) SESS = buildSessions(CFG.sessoes || []);
+    // ids antigos dos favoritos (versão anterior) passam para o formato atual
+    const oldIds = {}; (CFG.sessoes || []).forEach(x => { if (x.id) oldIds[x.id] = `${x.atividade || slugify(x.titulo)}-${x.data}-${x.inicio}`; });
+    favs = new Set(store.get("favs", []).map(id => oldIds[id] || id)); store.set("favs", [...favs]);
+    const man = document.querySelector('link[rel="manifest"]'); if (man) man.href = `/eventos/${slug}/manifest.webmanifest`;
+    const cache = store.get("cache", null);
+    if (cache && Array.isArray(cache.rows) && cache.rows.length) { SESS = buildSessions(cache.rows); INSCRITOS = cache.inscritos || {}; lastSheetOk = new Date(cache.at); }
+    else if (!(await loadSheet())) SESS = buildSessions(CFG.sessoes || []);
     state.dia = homeDay();
     shell(); bind(); route();
+    await loadRemote();
+    if (document.getElementById("sheet").hidden) render();
+    if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js").catch(() => {});
+    window.addEventListener("online", () => { offline = false; loadRemote().then(() => render()); });
+    window.addEventListener("offline", () => { offline = true; render(); });
     setInterval(() => { if ((state.tab === "programacao" || state.tab === "mapa") && document.getElementById("sheet").hidden) render(); }, REFRESH_UI_MS);
     if (CFG.planilha_csv) setInterval(async () => { if (await loadSheet() && document.getElementById("sheet").hidden) render(); }, REFRESH_SHEET_MS);
+    if (CFG.inscricao && CFG.inscricao.endpoint) setInterval(async () => { await loadRemote(); if (document.getElementById("sheet").hidden) render(); }, REFRESH_SHEET_MS);
   }
   start();
 })();

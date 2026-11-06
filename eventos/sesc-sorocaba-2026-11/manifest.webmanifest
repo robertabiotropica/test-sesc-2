@@ -1,0 +1,18 @@
+{
+  "name": "Sesc Sorocaba · Novembro 2026",
+  "short_name": "Sesc Sorocaba",
+  "description": "Programação de novembro do Sesc Sorocaba, ao vivo no celular.",
+  "id": "/e/sesc-sorocaba-2026-11",
+  "start_url": "/e/sesc-sorocaba-2026-11",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "lang": "pt-BR",
+  "background_color": "#F5F7EC",
+  "theme_color": "#356100",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

@@ -62,6 +62,7 @@ Pronto: o site lê a planilha a cada minuto. O Google pode levar alguns minutos 
 | como_participar | | Retirada de ingressos 1 hora antes |
 | atividade | | Código que liga várias datas da mesma atividade |
 | link_inscricao | | Link do botão "Inscreva-se" desta sessão |
+| vagas | | Número de vagas da atividade (vazio = sem limite) |
 
 ### Botão "Inscreva-se"
 
@@ -84,9 +85,23 @@ Para criar a planilha que recebe as inscrições:
 
 As inscrições aparecem na aba "Inscrições" da planilha. Um mesmo e-mail não é registrado duas vezes na mesma atividade.
 
+### Programação pela planilha do evento
+
+A planilha que recebe as inscrições também pode guardar a programação, numa aba chamada **Programação** com as colunas acima. O script (`integracoes/inscricoes.gs`) entrega essa aba ao site, e qualquer mudança aparece em até um minuto. Se a aba não existir ou estiver vazia, o site usa as sessões do `evento.json`.
+
+Para criar a aba: abra a planilha, vá em **Arquivo → Importar → Upload**, envie o `sessoes.csv` do evento, escolha **Inserir nova página** e renomeie a aba para **Programação**.
+
+### Vagas e e-mails
+
+Preencha a coluna `vagas` para limitar as inscrições de uma atividade. Quando acabarem, o botão vira "Vagas esgotadas", e com 5 ou menos o site mostra "Restam N vagas". No topo do script dá para ligar ou desligar o e-mail de confirmação para quem se inscreve e definir um e-mail da equipe para receber aviso de cada inscrição.
+
+### App instalável e sem internet
+
+O site pode ser instalado na tela inicial (aba Informações) e guarda uma cópia da programação no aparelho para abrir mesmo sem internet. Cada evento tem seu próprio `manifest.webmanifest` na pasta dele, com nome e endereço de início.
+
 ## Criar um novo evento
 
-1. Copie a pasta `eventos/sesc-sorocaba-2026-11` com um novo código, por exemplo `eventos/festival-2027`. Use só letras minúsculas, números e hífens.
+1. Copie a pasta `eventos/sesc-sorocaba-2026-11` (incluindo o `manifest.webmanifest`, ajustando nome e endereço) com um novo código, por exemplo `eventos/festival-2027`. Use só letras minúsculas, números e hífens.
 2. Edite o `evento.json`: nome, local, período, primeiro e último dia (`inicio` e `fim`), dias fechados, trilhas, "Em cartaz" e informações.
 3. Ligue a planilha do novo evento, ou preencha `sessoes` direto no arquivo.
 4. Acrescente o evento em `eventos/index.json` para ele aparecer na página inicial.

@@ -1,7 +1,33 @@
 {
   "cleanUrls": true,
-  "rewrites": [{ "source": "/e/:slug", "destination": "/evento" }],
+  "rewrites": [
+    {
+      "source": "/e/:slug",
+      "destination": "/evento"
+    }
+  ],
   "headers": [
-    { "source": "/eventos/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }] }
+    {
+      "source": "/eventos/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/sw.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        },
+        {
+          "key": "Service-Worker-Allowed",
+          "value": "/"
+        }
+      ]
+    }
   ]
 }
