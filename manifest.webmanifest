@@ -1,0 +1,9 @@
+{
+  "name": "Roteiro",
+  "short_name": "Roteiro",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F3F4F8",
+  "theme_color": "#2944C7",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

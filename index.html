@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Roteiro · programação de eventos ao vivo</title>
+<meta name="description" content="A programação do seu evento, ao vivo no celular.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Atkinson+Hyperlegible:wght@400;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="/assets/style.css">
+<style>
+.hero{padding-block:56px 24px;display:grid;gap:12px}
+.hero h1{font-size:clamp(34px,8vw,56px)}
+.hero p{font-size:18px;color:var(--muted);max-width:40ch;margin:0}
+.ev{display:grid;gap:4px;text-decoration:none;color:inherit}
+.ev:hover h2{color:var(--accent)}
+</style>
+</head>
+<body>
+<main><div class="wrap">
+  <section class="hero">
+    <div class="eyebrow">Roteiro</div>
+    <h1>A programação do seu evento, ao vivo no celular.</h1>
+    <p>Filtros por trilha, favoritos e o que está acontecendo agora. Atualizada direto de uma planilha.</p>
+  </section>
+  <section style="display:grid;gap:10px;padding-bottom:48px" id="lista"><p class="hint">Carregando eventos…</p></section>
+</div></main>
+<footer>Roteiro</footer>
+<script>
+fetch("/eventos/index.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{
+  const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  document.getElementById("lista").innerHTML='<h2 class="gh">Eventos</h2>'+d.eventos.map(e=>`<a class="panel ev" href="/e/${esc(e.slug)}"><h2>${esc(e.nome)}</h2><span class="who">${esc(e.periodo)} · ${esc(e.local)}</span></a>`).join("");
+}).catch(()=>{document.getElementById("lista").innerHTML='<p class="hint">Não foi possível carregar a lista de eventos.</p>'});
+</script>
+</body>
+</html>
