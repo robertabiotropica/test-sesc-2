@@ -67,6 +67,10 @@ Pronto: o site lê a planilha a cada minuto. O Google pode levar alguns minutos 
 
 No `evento.json`, o bloco `"inscricao"` define o texto do botão e o link padrão. O botão aparece nas sessões cujo "como participar" fala em inscrição. Para usar outro link numa sessão, preencha a coluna `link_inscricao`. Sessões com retirada de senha mostram "Senha no local" em vez do botão.
 
+### Mapa
+
+O bloco `"mapa"` do `evento.json` desenha a aba Mapa. Cada item de `"areas"` é uma sala: posição (`x`, `y`), tamanho (`w`, `h`), nome e os `locais` da planilha que pertencem a ela. As salas acendem quando há atividade agora ou no dia. Sem o bloco `"mapa"`, a aba não aparece.
+
 ## Criar um novo evento
 
 1. Copie a pasta `eventos/sesc-sorocaba-2026-11` com um novo código, por exemplo `eventos/festival-2027`. Use só letras minúsculas, números e hífens.

@@ -96,6 +96,191 @@
       "texto": "Sesc Sorocaba · Rua Barão de Piratininga, 555\nTelefone: (15) 3332-9933\nsescsp.org.br/sorocaba"
     }
   ],
+  "mapa": {
+    "aviso": "Mapa esquemático, fora de escala. A posição das salas dentro do prédio é aproximada.",
+    "largura": 340,
+    "altura": 620,
+    "contornos": [
+      {
+        "nome": "Terreno",
+        "pontos": "24,14 170,14 326,300 326,606 176,606 14,316"
+      },
+      {
+        "nome": "Prédio esportivo",
+        "pontos": "34,26 162,26 214,124 214,236 34,236",
+        "rotulo": {
+          "x": 44,
+          "y": 44
+        }
+      },
+      {
+        "nome": "Prédio de convivência",
+        "pontos": "120,348 326,348 326,598 182,598 120,486",
+        "rotulo": {
+          "x": 130,
+          "y": 366
+        }
+      }
+    ],
+    "detalhes": [
+      {
+        "nome": "Piscinas",
+        "tipo": "agua",
+        "pontos": "70,262 196,262 236,326 110,326"
+      },
+      {
+        "nome": "Passarela",
+        "tipo": "ponte",
+        "de": [
+          150,
+          236
+        ],
+        "para": [
+          214,
+          348
+        ]
+      }
+    ],
+    "areas": [
+      {
+        "nome": "Ginásio",
+        "locais": [
+          "Ginásio"
+        ],
+        "x": 48,
+        "y": 56,
+        "w": 124,
+        "h": 100
+      },
+      {
+        "nome": "Convivência do Ginásio",
+        "rotulo": "Convivência do Ginásio",
+        "locais": [
+          "Convivência do Ginásio"
+        ],
+        "x": 48,
+        "y": 166,
+        "w": 124,
+        "h": 54
+      },
+      {
+        "nome": "Quadra de areia",
+        "rotulo": "Quadra de areia",
+        "locais": [
+          "Quadra Externa (Areia)"
+        ],
+        "x": 232,
+        "y": 132,
+        "w": 74,
+        "h": 70
+      },
+      {
+        "nome": "Teatro",
+        "locais": [
+          "Teatro"
+        ],
+        "x": 196,
+        "y": 378,
+        "w": 118,
+        "h": 62
+      },
+      {
+        "nome": "Foyer do Teatro",
+        "rotulo": "Foyer",
+        "locais": [
+          "Foyer do Teatro"
+        ],
+        "x": 136,
+        "y": 384,
+        "w": 54,
+        "h": 56
+      },
+      {
+        "nome": "Convivência",
+        "rotulo": "Convivência (praça interna)",
+        "locais": [
+          "Convivência"
+        ],
+        "x": 136,
+        "y": 450,
+        "w": 178,
+        "h": 40
+      },
+      {
+        "nome": "Espaço de Exposições",
+        "rotulo": "Exposições",
+        "locais": [
+          "Espaço de Exposições"
+        ],
+        "x": 146,
+        "y": 500,
+        "w": 82,
+        "h": 34
+      },
+      {
+        "nome": "Biblioteca",
+        "locais": [
+          "Biblioteca"
+        ],
+        "x": 232,
+        "y": 500,
+        "w": 82,
+        "h": 34
+      },
+      {
+        "nome": "Sala 1",
+        "locais": [
+          "Sala 1"
+        ],
+        "x": 186,
+        "y": 572,
+        "w": 62,
+        "h": 22
+      },
+      {
+        "nome": "Sala 2",
+        "locais": [
+          "Sala 2"
+        ],
+        "x": 252,
+        "y": 572,
+        "w": 62,
+        "h": 22
+      },
+      {
+        "nome": "Sala de Oficinas",
+        "rotulo": "Oficinas",
+        "locais": [
+          "Sala de Oficinas"
+        ],
+        "x": 246,
+        "y": 544,
+        "w": 68,
+        "h": 24
+      },
+      {
+        "nome": "Espaço de Tecnologias e Artes",
+        "rotulo": "Tec. e Artes",
+        "locais": [
+          "Espaço de Tecnologias e Artes"
+        ],
+        "x": 172,
+        "y": 544,
+        "w": 70,
+        "h": 24
+      }
+    ],
+    "externos": [
+      {
+        "nome": "Parque das Águas",
+        "endereco": "Rua Joaquim Ferreira Barbosa, 1450, Jd. Abaeté, Sorocaba"
+      },
+      {
+        "nome": "Quilombo Cafundó",
+        "endereco": "Quilombo Cafundó, Salto de Pirapora, SP"
+      }
+    ]
+  },
   "sessoes": [
     {
       "id": "jequi-1",

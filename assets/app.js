@@ -140,9 +140,9 @@
   }
 
   /* ---------- telas ---------- */
-  const TABS = [["programacao","Programação"],["em-cartaz","Em cartaz"],["locais","Locais"],["info","Informações"]];
+  const TABS = [["programacao","Programação"],["mapa","Mapa"],["em-cartaz","Em cartaz"],["locais","Locais"],["info","Informações"]];
   function shell() {
-    const tabs = TABS.filter(([id]) => id !== "em-cartaz" || (CFG.emcartaz || []).length).filter(([id]) => id !== "info" || (CFG.info || []).length);
+    const tabs = TABS.filter(([id]) => id !== "mapa" || CFG.mapa).filter(([id]) => id !== "em-cartaz" || (CFG.emcartaz || []).length).filter(([id]) => id !== "info" || (CFG.info || []).length);
     document.getElementById("root").innerHTML = `
       ${E().aviso ? `<div class="proto"><div class="wrap">${esc(E().aviso)}</div></div>` : ""}
       <header class="top"><div class="wrap">
@@ -213,6 +213,67 @@
     const rows = Object.entries(m).sort((a, b) => b[1] - a[1]).map(([l, c]) => `<div class="li"><span>${esc(l)}</span><button class="go" data-local="${esc(l)}">${c} ${c > 1 ? "sessões" : "sessão"} →</button></div>`).join("");
     return `<div class="panel"><h2>Locais</h2><p>Toque em um local para ver a programação dele.</p><div class="list">${rows}</div></div>`;
   }
+  /* ---------- mapa ---------- */
+  function areaStatus(a) {
+    const n = now(), t = todayISO();
+    const here = SESS.filter(s => a.locais.includes(s.local));
+    return {
+      live: here.filter(s => n >= s.start && n < s.end),
+      next: here.filter(s => s.data === t && s.start > n),
+      today: here.filter(s => s.data === t)
+    };
+  }
+  function wrapLabel(txt, w) {
+    const max = Math.max(4, Math.floor((w - 8) / 5.6)), out = [];
+    let line = "";
+    String(txt).split(" ").forEach(word => { if ((line + " " + word).trim().length > max && line) { out.push(line); line = word; } else line = (line + " " + word).trim(); });
+    if (line) out.push(line);
+    return out.slice(0, 3);
+  }
+  function renderMapa() {
+    const M = CFG.mapa, W = M.largura || 340, H = M.altura || 620;
+    let svg = `<svg class="mapa" viewBox="0 0 ${W} ${H}" role="group" aria-label="Mapa das salas">`;
+    (M.contornos || []).forEach((c, i) => {
+      svg += `<polygon points="${esc(c.pontos)}" class="${i === 0 ? "lote" : "predio"}"/>`;
+      if (c.rotulo) svg += `<text x="${c.rotulo.x}" y="${c.rotulo.y}" class="m-predio">${esc(c.nome)}</text>`;
+    });
+    (M.detalhes || []).forEach(d => {
+      if (d.tipo === "agua") svg += `<polygon points="${esc(d.pontos)}" class="agua"/><text x="${d.pontos.split(" ")[0].split(",")[0] * 1 + 34}" y="${d.pontos.split(" ")[0].split(",")[1] * 1 + 36}" class="m-det">${esc(d.nome)}</text>`;
+      if (d.tipo === "ponte") svg += `<line x1="${d.de[0]}" y1="${d.de[1]}" x2="${d.para[0]}" y2="${d.para[1]}" class="ponte"/>`;
+    });
+    (M.areas || []).forEach(a => {
+      const st = areaStatus(a), cls = st.live.length ? "sala live" : st.today.length ? "sala hoje" : "sala";
+      const lines = wrapLabel(a.rotulo || a.nome, a.w), lh = 11, y0 = a.y + a.h / 2 - (lines.length - 1) * lh / 2 + 3.5;
+      svg += `<g class="${cls}" data-area="${esc(a.nome)}" tabindex="0" role="button" aria-label="${esc(a.nome)}: ${st.live.length ? st.live.length + " acontecendo agora" : st.today.length ? st.today.length + " hoje" : "nada hoje"}">
+        <rect x="${a.x}" y="${a.y}" width="${a.w}" height="${a.h}" rx="5"/>
+        ${lines.map((l, i) => `<text x="${a.x + a.w / 2}" y="${y0 + i * lh}" text-anchor="middle">${esc(l)}</text>`).join("")}
+        ${st.live.length ? `<circle cx="${a.x + a.w - 7}" cy="${a.y + 7}" r="4" class="m-dot"/>` : ""}
+      </g>`;
+    });
+    svg += `</svg>`;
+    const n = now(), live = SESS.filter(s => n >= s.start && n < s.end);
+    const ext = (M.externos || []).map(e => { const st = areaStatus({locais: [e.nome]}); return `<div class="li"><span><b>${esc(e.nome)}</b><br><span class="who">${esc(e.endereco)}${st.today.length ? ` · ${st.today.length} hoje` : ""}</span></span><a class="go" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(e.endereco)}" target="_blank" rel="noopener">Abrir no mapa ↗</a></div>`; }).join("");
+    return `<div class="panel"><h2>Mapa</h2><p>Toque numa sala para ver o que está acontecendo nela e o que vem a seguir.</p>
+        <div class="legend"><span><i class="lg live"></i>Acontecendo agora</span><span><i class="lg hoje"></i>Tem atividade hoje</span><span><i class="lg"></i>Nada hoje</span></div>
+        <div class="mapa-wrap">${svg}</div>
+        ${M.aviso ? `<p class="hint">${esc(M.aviso)}</p>` : ""}</div>
+      <div class="panel"><h2>Acontecendo agora</h2>${live.length ? `<div class="list">${live.map(s => `<div class="li"><span><span class="kind">${esc(s.local)}</span><br>${esc(s.titulo)}</span><button class="go" data-open="${esc(s.id)}">Ver →</button></div>`).join("")}</div>` : `<p class="hint">Nada acontecendo neste momento.</p>`}</div>
+      ${ext ? `<div class="panel"><h2>Fora da unidade</h2><div class="list">${ext}</div></div>` : ""}`;
+  }
+  function openArea(nome) {
+    const a = (CFG.mapa.areas || []).find(x => x.nome === nome); if (!a) return;
+    const st = areaStatus(a), el = document.getElementById("sheet");
+    const item = s => `<div class="li"><span><span class="kind">${hfmt(s.inicio)}${s.fim ? "–" + hfmt(s.fim) : ""}</span><br>${esc(s.titulo)}</span><button class="go" data-open="${esc(s.id)}">Ver →</button></div>`;
+    el.innerHTML = `<div class="sheet-bg" data-bg="1"><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="ar-t">
+      <button class="close" data-act="close">Fechar</button>
+      <span class="kind">Mapa</span><h2 id="ar-t">${esc(a.nome)}</h2>
+      ${st.live.length ? `<div><span class="tag live">Agora</span><div class="list">${st.live.map(item).join("")}</div></div>` : `<p class="hint" style="margin:0">Nada acontecendo aqui agora.</p>`}
+      ${st.next.length ? `<div><span class="kind">A seguir, hoje</span><div class="list">${st.next.map(item).join("")}</div></div>` : st.today.length ? `<p class="hint" style="margin:0">Não há mais atividades aqui hoje.</p>` : `<p class="hint" style="margin:0">Nenhuma atividade programada aqui hoje.</p>`}
+      ${a.locais.some(l => SESS.some(s => s.local === l)) ? `<div class="row"><button class="ghost" data-local="${esc(a.locais[0])}">Ver toda a programação deste local</button></div>` : ""}
+    </div></div>`;
+    el.hidden = false; el.querySelector(".close").focus();
+  }
+
   function renderInfo() {
     const link = t => esc(t).replace(/\b((?:https?:\/\/)?[a-z0-9.-]+\.(?:org|com|gov)(?:\.br)?(?:\/[^\s<]*)?)/gi, m => `<a href="${m.startsWith("http") ? m : "https://" + m}" target="_blank" rel="noopener">${m}</a>`);
     return (CFG.info || []).map(b => `<div class="panel"><h2>${esc(b.titulo)}</h2><p class="pre">${link(b.texto)}</p></div>`).join("");
@@ -241,7 +302,7 @@
   function render() {
     document.querySelectorAll("nav.tabs a").forEach(a => a.setAttribute("aria-current", a.dataset.tab === state.tab ? "page" : "false"));
     const v = document.getElementById("view"), ae = document.activeElement, keep = ae && ae.id === "q", pos = keep ? ae.selectionStart : 0;
-    v.innerHTML = state.tab === "em-cartaz" ? renderCartaz() : state.tab === "locais" ? renderLocais() : state.tab === "info" ? renderInfo() : renderProg();
+    v.innerHTML = state.tab === "mapa" && CFG.mapa ? renderMapa() : state.tab === "em-cartaz" ? renderCartaz() : state.tab === "locais" ? renderLocais() : state.tab === "info" ? renderInfo() : renderProg();
     if (keep) { const q = document.getElementById("q"); q.focus(); q.setSelectionRange(pos, pos); }
   }
   function route() { const h = location.hash.slice(1); state.tab = TABS.some(t => t[0] === h) ? h : "programacao"; render(); }
@@ -249,6 +310,7 @@
   function bind() {
     document.addEventListener("click", e => {
       const bg = e.target.closest("[data-bg]"); if (bg && e.target === bg) { closeSheet(); return; }
+      const ar = e.target.closest("[data-area]"); if (ar) { openArea(ar.dataset.area); return; }
       const t = e.target.closest("[data-dia],[data-trilha],[data-fav],[data-star],[data-open],[data-local],[data-act]"); if (!t) return;
       const d = t.dataset;
       if (d.dia) state.dia = d.dia;
@@ -256,14 +318,14 @@
       else if (d.fav) state.fav = d.fav === "1";
       else if (d.star) { favs.has(d.star) ? favs.delete(d.star) : favs.add(d.star); store.set("favs", [...favs]); if (!document.getElementById("sheet").hidden) openSheet(d.star); }
       else if (d.open) { openSheet(d.open); return; }
-      else if (d.local) { state.local = d.local; state.dia = "todos"; state.past = true; if (location.hash !== "#programacao") { location.hash = "programacao"; return; } }
+      else if (d.local) { closeSheet(); state.local = d.local; state.dia = "todos"; state.past = true; if (location.hash !== "#programacao") { location.hash = "programacao"; return; } }
       else if (d.act === "past") state.past = !state.past;
       else if (d.act === "clearlocal") state.local = null;
       else if (d.act === "close") { closeSheet(); return; }
       render();
     });
     document.addEventListener("input", e => { if (e.target.id === "q") { state.q = e.target.value; render(); } });
-    document.addEventListener("keydown", e => { if (e.key === "Escape") closeSheet(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeSheet(); if ((e.key === "Enter" || e.key === " ") && e.target.dataset && e.target.dataset.area) { e.preventDefault(); openArea(e.target.dataset.area); } });
     window.addEventListener("hashchange", () => { route(); window.scrollTo(0, 0); });
   }
 
@@ -286,7 +348,7 @@
     const fromSheet = await loadSheet();
     if (!fromSheet) SESS = buildSessions(CFG.sessoes || []);
     shell(); bind(); route();
-    setInterval(() => { if (state.tab === "programacao" && document.getElementById("sheet").hidden) render(); }, REFRESH_UI_MS);
+    setInterval(() => { if ((state.tab === "programacao" || state.tab === "mapa") && document.getElementById("sheet").hidden) render(); }, REFRESH_UI_MS);
     if (CFG.planilha_csv) setInterval(async () => { if (await loadSheet() && document.getElementById("sheet").hidden) render(); }, REFRESH_SHEET_MS);
   }
   start();

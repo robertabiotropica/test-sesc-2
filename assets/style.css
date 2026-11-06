@@ -145,3 +145,29 @@ footer{color:var(--muted);font-size:13px;text-align:center;padding-block:8px 32p
 .cta:hover{filter:brightness(1.08)}
 .cta:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 .cta.big{font-size:16px;padding:11px 20px;margin-top:0}
+
+.mapa-wrap{overflow-x:auto;display:flex;justify-content:center}
+svg.mapa{width:100%;max-width:440px;height:auto;display:block;font-family:var(--body)}
+svg.mapa .lote{fill:var(--bg);stroke:var(--line);stroke-width:1.5;stroke-dasharray:4 4}
+svg.mapa .predio{fill:var(--surface);stroke:var(--muted);stroke-width:1.2}
+svg.mapa .agua{fill:var(--c3);opacity:.22;stroke:var(--c3);stroke-width:1}
+svg.mapa .ponte{stroke:var(--muted);stroke-width:4;stroke-linecap:round;stroke-dasharray:1 6}
+svg.mapa .m-predio{font-family:var(--display);font-weight:700;font-size:11px;fill:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+svg.mapa .m-det{font-size:10px;fill:var(--muted)}
+svg.mapa .sala{cursor:pointer}
+svg.mapa .sala rect{fill:var(--bg);stroke:var(--line);stroke-width:1.2}
+svg.mapa .sala text{font-size:9.5px;fill:var(--muted)}
+svg.mapa .sala.hoje rect{fill:var(--surface);stroke:var(--accent);stroke-width:2}
+svg.mapa .sala.hoje text{fill:var(--ink);font-weight:700}
+svg.mapa .sala.live rect{fill:var(--live-soft);stroke:var(--live);stroke-width:2.5}
+svg.mapa .sala.live text{fill:var(--ink);font-weight:700}
+svg.mapa .m-dot{fill:var(--live)}
+svg.mapa .sala:hover rect,svg.mapa .sala:focus rect{stroke-width:3}
+svg.mapa .sala:focus{outline:none}
+svg.mapa .sala:focus-visible rect{stroke:var(--ink)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.lg{display:inline-block;width:14px;height:12px;border-radius:3px;border:1.5px solid var(--line);background:var(--bg)}
+.lg.hoje{border:2px solid var(--accent);background:var(--surface)}
+.lg.live{border:2px solid var(--live);background:var(--live-soft)}
+@media (prefers-reduced-motion:no-preference){svg.mapa .m-dot{animation:blink 1.6s ease-in-out infinite}}
