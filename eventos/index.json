@@ -1,0 +1,14 @@
+{
+  "plataforma": {
+    "nome": "Roteiro",
+    "descricao": "A programação do seu evento, ao vivo no celular."
+  },
+  "eventos": [
+    {
+      "slug": "sesc-sorocaba-2026-11",
+      "nome": "Sesc Sorocaba · Novembro 2026",
+      "periodo": "1 a 29/11",
+      "local": "Rua Barão de Piratininga, 555"
+    }
+  ]
+}

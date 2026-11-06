@@ -1,0 +1,2630 @@
+{
+  "evento": {
+    "eyebrow": "Guia de Programação",
+    "nome": "Sesc Sorocaba · Novembro 2026",
+    "local": "Rua Barão de Piratininga, 555",
+    "periodo": "1 a 29/11",
+    "inicio": "2026-11-01",
+    "fim": "2026-11-29",
+    "fechados": [
+      "2026-11-03"
+    ],
+    "funcionamento": "Ter a sex 9h–22h · Sáb, dom e feriados 10h–19h",
+    "fuso": "-03:00",
+    "tz": "America/Sao_Paulo",
+    "aviso": "Protótipo não oficial, montado a partir do Guia de Programação de novembro. Confira datas e ingressos em sescsp.org.br."
+  },
+  "trilhas": [
+    "Iorubrá",
+    "Shows e espetáculos",
+    "Cinema",
+    "Cursos e encontros",
+    "Crianças",
+    "Pessoas idosas",
+    "Esporte"
+  ],
+  "planilha_csv": "",
+  "emcartaz": [
+    {
+      "titulo": "Sinfonia",
+      "trilha": "Cursos e encontros",
+      "quando": "Até 30/12 · Foyer do Teatro · grátis",
+      "descricao": "Painel visual e sonoro interativo com as aves da região de Sorocaba. Com Pierre Souza Fonseca."
+    },
+    {
+      "titulo": "Lugares de brincar",
+      "trilha": "Crianças",
+      "quando": "Sáb e dom 13h30–15h30 · dias 2 e 20 · 3 a 12 anos",
+      "descricao": "Brincar espontâneo em família, com jogos e materiais diversos."
+    },
+    {
+      "titulo": "Praião para a família",
+      "trilha": "Crianças",
+      "quando": "Sáb e dom 16h–18h30 · dias 2 e 20 · Quadra de areia · até 12 anos",
+      "descricao": "Mini esportes e castelos de areia. Crianças com um adulto responsável."
+    },
+    {
+      "titulo": "Ludus: jogos de precisão",
+      "trilha": "Esporte",
+      "quando": "Sáb 10h–13h30 · dom 10h30–13h30 · dias 2 e 20 · Ginásio · 6+",
+      "descricao": "KanJam, Cornhole, RampShot e outros jogos de mira e estratégia."
+    },
+    {
+      "titulo": "Faça você mesmo (DIY)",
+      "trilha": "Cursos e encontros",
+      "quando": "Domingos 14h–17h e algumas sextas · Espaço de Tecnologias e Artes · 8+",
+      "descricao": "Sala aberta com educadoras para desenvolver seus projetos. Traga sua ideia e o material."
+    },
+    {
+      "titulo": "Caravana esportiva de voleibol",
+      "trilha": "Esporte",
+      "quando": "10 Itararé · 11 Itapeva · 12 Itapetininga e Itu · 13 São Roque",
+      "descricao": "Com Fofão, ex-atleta olímpica. Endereços no portal do Sesc."
+    },
+    {
+      "titulo": "Recreação esportiva no Ginásio",
+      "trilha": "Esporte",
+      "quando": "Fins de semana e dias 2 e 20 · exceto 28",
+      "descricao": "Tênis de mesa, futsal feminino, vôlei, basquete e futsal mistos. Credencial válida."
+    },
+    {
+      "titulo": "Inscrições: Palco Aberto e Feira de Jovens Empreendedores",
+      "trilha": "Cursos e encontros",
+      "quando": "De 3 a 21/11 em sescsp.org.br/sorocaba · 13 a 29 anos",
+      "descricao": "As apresentações e a feira acontecem em 6/12."
+    }
+  ],
+  "info": [
+    {
+      "titulo": "Funcionamento",
+      "texto": "Terça a sexta, 9h às 22h. Sábados, domingos e feriados, 10h às 19h. Aberto nos dias 2 e 20, fechado no dia 3."
+    },
+    {
+      "titulo": "Ingressos",
+      "texto": "Shows e espetáculos pagos têm venda semanal em dois lotes: on-line às terças, a partir das 17h, e nas bilheterias às quartas, a partir das 17h.\nAtividades de 2 a 8/11: venda on-line 27/10, presencial 28/10.\nAtividades de 10 a 15/11: on-line 3/11, presencial 4/11.\nAtividades de 17 a 22/11: on-line 10/11, presencial 11/11.\nAtividades de 24 a 29/11: on-line 17/11, presencial 18/11.\nAtividades gratuitas com retirada de senha: na Central de Atendimento."
+    },
+    {
+      "titulo": "Preços",
+      "texto": "● Credencial Plena: trabalhadores do comércio de bens, serviços e turismo e dependentes.\n■ Meia-entrada: aposentados, pessoas com 60+ ou com deficiência, estudantes e servidores de escola pública.\n▲ Inteira: demais públicos."
+    },
+    {
+      "titulo": "Contato",
+      "texto": "Sesc Sorocaba · Rua Barão de Piratininga, 555\nTelefone: (15) 3332-9933\nsescsp.org.br/sorocaba"
+    }
+  ],
+  "sessoes": [
+    {
+      "id": "jequi-1",
+      "atividade": "jequi",
+      "titulo": "A mensagem de Jequi",
+      "tipo": "Exibição",
+      "trilhas": [
+        "Iorubrá",
+        "Crianças",
+        "Cinema"
+      ],
+      "com": "Direção: Igor Amin · ficção infantil · 73 min · legendas + Libras",
+      "descricao": "Jequi, um menino quilombola do Vale do Jequitinhonha, usa saberes ancestrais e uma mensagem numa garrafa para alertar outras crianças sobre a mineração predatória.",
+      "local": "Teatro",
+      "data": "2026-11-02",
+      "inicio": "16:00",
+      "fim": "17:15",
+      "entrada": "Grátis",
+      "classificacao": "Livre",
+      "acessibilidade": "Libras",
+      "como_participar": "Retirada de ingressos 1 hora antes"
+    },
+    {
+      "id": "elizeth-1",
+      "atividade": "elizeth",
+      "titulo": "Elizeth encontra Emílio",
+      "tipo": "Show",
+      "trilhas": [
+        "Iorubrá"
+      ],
+      "com": "Adyel Silva e Pedro Louis",
+      "descricao": "Homenagem a Elizeth Cardoso e Emílio Santiago, com Ary Holland ao piano e Rudson Pimenta na bateria.",
+      "local": "Convivência",
+      "data": "2026-11-02",
+      "inicio": "17:00",
+      "fim": "",
+      "entrada": "Grátis",
+      "classificacao": "Livre",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "portacanetas-1",
+      "atividade": "portacanetas",
+      "titulo": "Criação de porta-canetas",
+      "tipo": "Curso",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Ivanilde Monteiro, artesã, professora e pesquisadora",
+      "descricao": "Técnica de cartonagem para confeccionar um porta-canetas, do acabamento à montagem. Curso sequencial.",
+      "local": "Espaço de Tecnologias e Artes",
+      "data": "2026-11-04",
+      "inicio": "10:00",
+      "fim": "12:00",
+      "entrada": "Grátis",
+      "classificacao": "14+",
+      "acessibilidade": "",
+      "como_participar": "Inscrições online a partir das 14h de 28/10 (Credencial Plena) e 30/10 (público geral)"
+    },
+    {
+      "id": "portacanetas-2",
+      "atividade": "portacanetas",
+      "titulo": "Criação de porta-canetas",
+      "tipo": "Curso",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Ivanilde Monteiro, artesã, professora e pesquisadora",
+      "descricao": "Técnica de cartonagem para confeccionar um porta-canetas, do acabamento à montagem. Curso sequencial.",
+      "local": "Espaço de Tecnologias e Artes",
+      "data": "2026-11-11",
+      "inicio": "10:00",
+      "fim": "12:00",
+      "entrada": "Grátis",
+      "classificacao": "14+",
+      "acessibilidade": "",
+      "como_participar": "Inscrições online a partir das 14h de 28/10 (Credencial Plena) e 30/10 (público geral)"
+    },
+    {
+      "id": "reflorestando-1",
+      "atividade": "reflorestando",
+      "titulo": "Reflorestando os sentidos: plantas, aromas, corpo e sentidos",
+      "tipo": "Curso",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Giane Carneiro, aromaterapeuta integrativa e educadora",
+      "descricao": "Travessia sensorial com cheiros, texturas e movimento. A cada encontro, cada pessoa cria um produto feito à mão. Curso sequencial.",
+      "local": "Sala de Oficinas",
+      "data": "2026-11-04",
+      "inicio": "19:00",
+      "fim": "21:30",
+      "entrada": "Grátis",
+      "classificacao": "12+",
+      "acessibilidade": "",
+      "como_participar": "Inscrições online a partir das 14h de 28/10 (Credencial Plena) e 30/10 (público geral)"
+    },
+    {
+      "id": "reflorestando-2",
+      "atividade": "reflorestando",
+      "titulo": "Reflorestando os sentidos: plantas, aromas, corpo e sentidos",
+      "tipo": "Curso",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Giane Carneiro, aromaterapeuta integrativa e educadora",
+      "descricao": "Travessia sensorial com cheiros, texturas e movimento. A cada encontro, cada pessoa cria um produto feito à mão. Curso sequencial.",
+      "local": "Sala de Oficinas",
+      "data": "2026-11-11",
+      "inicio": "19:00",
+      "fim": "21:30",
+      "entrada": "Grátis",
+      "classificacao": "12+",
+      "acessibilidade": "",
+      "como_participar": "Inscrições online a partir das 14h de 28/10 (Credencial Plena) e 30/10 (público geral)"
+    },
+    {
+      "id": "reflorestando-3",
+      "atividade": "reflorestando",
+      "titulo": "Reflorestando os sentidos: plantas, aromas, corpo e sentidos",
+      "tipo": "Curso",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Giane Carneiro, aromaterapeuta integrativa e educadora",
+      "descricao": "Travessia sensorial com cheiros, texturas e movimento. A cada encontro, cada pessoa cria um produto feito à mão. Curso sequencial.",
+      "local": "Sala de Oficinas",
+      "data": "2026-11-18",
+      "inicio": "19:00",
+      "fim": "21:30",
+      "entrada": "Grátis",
+      "classificacao": "12+",
+      "acessibilidade": "",
+      "como_participar": "Inscrições online a partir das 14h de 28/10 (Credencial Plena) e 30/10 (público geral)"
+    },
+    {
+      "id": "reflorestando-4",
+      "atividade": "reflorestando",
+      "titulo": "Reflorestando os sentidos: plantas, aromas, corpo e sentidos",
+      "tipo": "Curso",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Giane Carneiro, aromaterapeuta integrativa e educadora",
+      "descricao": "Travessia sensorial com cheiros, texturas e movimento. A cada encontro, cada pessoa cria um produto feito à mão. Curso sequencial.",
+      "local": "Sala de Oficinas",
+      "data": "2026-11-25",
+      "inicio": "19:00",
+      "fim": "21:30",
+      "entrada": "Grátis",
+      "classificacao": "12+",
+      "acessibilidade": "",
+      "como_participar": "Inscrições online a partir das 14h de 28/10 (Credencial Plena) e 30/10 (público geral)"
+    },
+    {
+      "id": "abayomin-1",
+      "atividade": "abayomin",
+      "titulo": "Abayomi'n: saberes e sabores ancestrais. Eparrey!",
+      "tipo": "Encontro",
+      "trilhas": [
+        "Iorubrá",
+        "Cinema"
+      ],
+      "com": "Direção: Reinaldo Lima · documentário · 15 min",
+      "descricao": "Curta sobre o preparo do Acará, oferenda a Oyá e origem do acarajé, unindo cozinha, dança e fé.",
+      "local": "Teatro",
+      "data": "2026-11-05",
+      "inicio": "19:00",
+      "fim": "20:00",
+      "entrada": "Grátis",
+      "classificacao": "12",
+      "acessibilidade": "",
+      "como_participar": "Retirada de ingressos 1 hora antes"
+    },
+    {
+      "id": "nsaba-1",
+      "atividade": "nsaba",
+      "titulo": "Nsaba: plantas medicinais nas tradições afro-brasileiras",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Tata Jaga Anzulo, Pedro Carlessi e Ricardo Souza (Tata Kwame)",
+      "descricao": "Três encontros sobre as plantas nas comunidades de matriz africana e o diálogo entre saber tradicional e científico.",
+      "local": "Sala de Oficinas",
+      "data": "2026-11-05",
+      "inicio": "19:00",
+      "fim": "22:00",
+      "entrada": "Grátis",
+      "classificacao": "12+",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "nsaba-2",
+      "atividade": "nsaba",
+      "titulo": "Nsaba: plantas medicinais nas tradições afro-brasileiras",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Tata Jaga Anzulo, Pedro Carlessi e Ricardo Souza (Tata Kwame)",
+      "descricao": "Três encontros sobre as plantas nas comunidades de matriz africana e o diálogo entre saber tradicional e científico.",
+      "local": "Sala de Oficinas",
+      "data": "2026-11-12",
+      "inicio": "19:00",
+      "fim": "22:00",
+      "entrada": "Grátis",
+      "classificacao": "12+",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "nsaba-3",
+      "atividade": "nsaba",
+      "titulo": "Nsaba: plantas medicinais nas tradições afro-brasileiras",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Tata Jaga Anzulo, Pedro Carlessi e Ricardo Souza (Tata Kwame)",
+      "descricao": "Três encontros sobre as plantas nas comunidades de matriz africana e o diálogo entre saber tradicional e científico.",
+      "local": "Sala de Oficinas",
+      "data": "2026-11-19",
+      "inicio": "19:00",
+      "fim": "22:00",
+      "entrada": "Grátis",
+      "classificacao": "12+",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "orixas-1",
+      "atividade": "orixas",
+      "titulo": "Orixás em movimento: animação quadro a quadro",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Célia Harumi, educadora de tecnologias e artes",
+      "descricao": "Animação com recortes em papel, usando personagens e objetos da mitologia afro-brasileira.",
+      "local": "Sala 2",
+      "data": "2026-11-06",
+      "inicio": "14:00",
+      "fim": "17:00",
+      "entrada": "Grátis",
+      "classificacao": "12+",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "jeremias-1",
+      "atividade": "jeremias",
+      "titulo": "Clube de leitura para crianças: Jeremias, Pele",
+      "tipo": "Vivência",
+      "trilhas": [
+        "Iorubrá",
+        "Crianças"
+      ],
+      "com": "Alan Pablo, educador do Espaço de Brincar",
+      "descricao": "Conversa sobre o livro de Rafael Calça e Jefferson Costa, em que Jeremias enfrenta o preconceito pela primeira vez. Há exemplares para empréstimo na Biblioteca.",
+      "local": "Biblioteca",
+      "data": "2026-11-07",
+      "inicio": "10:30",
+      "fim": "11:30",
+      "entrada": "Grátis",
+      "classificacao": "8 a 12 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 30 minutos antes"
+    },
+    {
+      "id": "patrimonio-1",
+      "atividade": "patrimonio",
+      "titulo": "Patrimônio negro em Sorocaba",
+      "tipo": "Curso",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Pedro Carvalho e Wellington Ataide, historiadores, e Cícero Santos",
+      "descricao": "Dois encontros sobre lugares e personagens que marcam a presença negra na formação da cidade.",
+      "local": "Sala 1",
+      "data": "2026-11-07",
+      "inicio": "10:30",
+      "fim": "12:30",
+      "entrada": "Grátis",
+      "classificacao": "16+",
+      "acessibilidade": "",
+      "como_participar": "Inscrições online a partir das 14h de 28/10 (Credencial Plena) e 30/10 (público geral)"
+    },
+    {
+      "id": "patrimonio-2",
+      "atividade": "patrimonio",
+      "titulo": "Patrimônio negro em Sorocaba",
+      "tipo": "Curso",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Pedro Carvalho e Wellington Ataide, historiadores, e Cícero Santos",
+      "descricao": "Dois encontros sobre lugares e personagens que marcam a presença negra na formação da cidade.",
+      "local": "Sala 1",
+      "data": "2026-11-14",
+      "inicio": "08:30",
+      "fim": "11:30",
+      "entrada": "Grátis",
+      "classificacao": "16+",
+      "acessibilidade": "",
+      "como_participar": "Inscrições online a partir das 14h de 28/10 (Credencial Plena) e 30/10 (público geral)"
+    },
+    {
+      "id": "terreiro-1",
+      "atividade": "terreiro",
+      "titulo": "Terreiro de terra batida e suas histórias",
+      "tipo": "Mediação de leitura",
+      "trilhas": [
+        "Iorubrá",
+        "Crianças"
+      ],
+      "com": "Coco de Muié",
+      "descricao": "Rodas de histórias inspiradas nas tradições orais afro-indígenas.",
+      "local": "Biblioteca",
+      "data": "2026-11-07",
+      "inicio": "14:00",
+      "fim": "17:00",
+      "entrada": "Grátis",
+      "classificacao": "Livre",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "baile-1",
+      "atividade": "baile",
+      "titulo": "Baile Iorubrá",
+      "tipo": "Intervenção",
+      "trilhas": [
+        "Iorubrá"
+      ],
+      "com": "DJ Easy Nylon e Cia. Charme 015",
+      "descricao": "Set de música negra com a Cia. Charme 015 puxando o público para a pista.",
+      "local": "Convivência",
+      "data": "2026-11-07",
+      "inicio": "19:00",
+      "fim": "21:00",
+      "entrada": "Grátis",
+      "classificacao": "12",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "saias-1",
+      "atividade": "saias",
+      "titulo": "Saias",
+      "tipo": "Espetáculo",
+      "trilhas": [
+        "Iorubrá",
+        "Shows e espetáculos"
+      ],
+      "com": "GiraSaia",
+      "descricao": "Maracatu, jongo, ciranda e samba de roda celebram o feminino na cultura popular. 80 min.",
+      "local": "Convivência",
+      "data": "2026-11-08",
+      "inicio": "17:00",
+      "fim": "18:20",
+      "entrada": "Grátis",
+      "classificacao": "Livre",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "estamparia-1",
+      "atividade": "estamparia",
+      "titulo": "Estamparia têxtil e costura de echarpe",
+      "tipo": "Curso",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Célia Harumi, educadora de tecnologias e artes",
+      "descricao": "Com referências de adinkra, bogolan e adire, cada pessoa cria um carimbo, estampa o tecido e costura uma echarpe. Curso sequencial.",
+      "local": "Espaço de Tecnologias e Artes",
+      "data": "2026-11-12",
+      "inicio": "10:00",
+      "fim": "12:00",
+      "entrada": "Grátis",
+      "classificacao": "14+",
+      "acessibilidade": "",
+      "como_participar": "Inscrições online a partir das 14h de 4/11 (Credencial Plena) e 6/11 (público geral)"
+    },
+    {
+      "id": "estamparia-2",
+      "atividade": "estamparia",
+      "titulo": "Estamparia têxtil e costura de echarpe",
+      "tipo": "Curso",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Célia Harumi, educadora de tecnologias e artes",
+      "descricao": "Com referências de adinkra, bogolan e adire, cada pessoa cria um carimbo, estampa o tecido e costura uma echarpe. Curso sequencial.",
+      "local": "Espaço de Tecnologias e Artes",
+      "data": "2026-11-19",
+      "inicio": "10:00",
+      "fim": "12:00",
+      "entrada": "Grátis",
+      "classificacao": "14+",
+      "acessibilidade": "",
+      "como_participar": "Inscrições online a partir das 14h de 4/11 (Credencial Plena) e 6/11 (público geral)"
+    },
+    {
+      "id": "estamparia-3",
+      "atividade": "estamparia",
+      "titulo": "Estamparia têxtil e costura de echarpe",
+      "tipo": "Curso",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Célia Harumi, educadora de tecnologias e artes",
+      "descricao": "Com referências de adinkra, bogolan e adire, cada pessoa cria um carimbo, estampa o tecido e costura uma echarpe. Curso sequencial.",
+      "local": "Espaço de Tecnologias e Artes",
+      "data": "2026-11-26",
+      "inicio": "10:00",
+      "fim": "12:00",
+      "entrada": "Grátis",
+      "classificacao": "14+",
+      "acessibilidade": "",
+      "como_participar": "Inscrições online a partir das 14h de 4/11 (Credencial Plena) e 6/11 (público geral)"
+    },
+    {
+      "id": "escultura-1",
+      "atividade": "escultura",
+      "titulo": "Escultura de memória",
+      "tipo": "Curso",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Lúcia Maria, artista visual",
+      "descricao": "Criação escultórica com materiais reaproveitados: desenho, estrutura, modelagem e acabamento. Curso sequencial.",
+      "local": "Espaço de Tecnologias e Artes",
+      "data": "2026-11-12",
+      "inicio": "14:00",
+      "fim": "17:00",
+      "entrada": "● R$ 6 · ■ R$ 10 · ▲ R$ 20",
+      "classificacao": "16+",
+      "acessibilidade": "",
+      "como_participar": "Inscrições online a partir das 14h de 4/11 (Credencial Plena) e 6/11 (público geral)"
+    },
+    {
+      "id": "escultura-2",
+      "atividade": "escultura",
+      "titulo": "Escultura de memória",
+      "tipo": "Curso",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Lúcia Maria, artista visual",
+      "descricao": "Criação escultórica com materiais reaproveitados: desenho, estrutura, modelagem e acabamento. Curso sequencial.",
+      "local": "Espaço de Tecnologias e Artes",
+      "data": "2026-11-19",
+      "inicio": "14:00",
+      "fim": "17:00",
+      "entrada": "● R$ 6 · ■ R$ 10 · ▲ R$ 20",
+      "classificacao": "16+",
+      "acessibilidade": "",
+      "como_participar": "Inscrições online a partir das 14h de 4/11 (Credencial Plena) e 6/11 (público geral)"
+    },
+    {
+      "id": "escultura-3",
+      "atividade": "escultura",
+      "titulo": "Escultura de memória",
+      "tipo": "Curso",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Lúcia Maria, artista visual",
+      "descricao": "Criação escultórica com materiais reaproveitados: desenho, estrutura, modelagem e acabamento. Curso sequencial.",
+      "local": "Espaço de Tecnologias e Artes",
+      "data": "2026-11-26",
+      "inicio": "14:00",
+      "fim": "17:00",
+      "entrada": "● R$ 6 · ■ R$ 10 · ▲ R$ 20",
+      "classificacao": "16+",
+      "acessibilidade": "",
+      "como_participar": "Inscrições online a partir das 14h de 4/11 (Credencial Plena) e 6/11 (público geral)"
+    },
+    {
+      "id": "autoras-1",
+      "atividade": "autoras",
+      "titulo": "Autoras: literatura nos vestibulares",
+      "tipo": "Bate-papo",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Maria Teresa Ferreira · mediação de Janete Campos",
+      "descricao": "Encontro sobre Balada de Amor ao Vento, de Paulina Chiziane.",
+      "local": "Sala 2",
+      "data": "2026-11-12",
+      "inicio": "19:00",
+      "fim": "21:00",
+      "entrada": "Grátis",
+      "classificacao": "14+",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "alquimistas-1",
+      "atividade": "alquimistas",
+      "titulo": "Os Alquimistas estão chegando: som e negritude em A Tábua de Esmeralda",
+      "tipo": "Palestra",
+      "trilhas": [
+        "Iorubrá"
+      ],
+      "com": "Wellington Ataíde, Daniel Azevedo e Maurício de Souza Mafra · Banda Júlio e os Alquimistas",
+      "descricao": "Uma conversa com música sobre o disco de Jorge Ben de 1974, gravado em plena ditadura.",
+      "local": "Teatro",
+      "data": "2026-11-13",
+      "inicio": "19:00",
+      "fim": "21:30",
+      "entrada": "Grátis",
+      "classificacao": "12+",
+      "acessibilidade": "",
+      "como_participar": "Retirada de ingressos 1 hora antes"
+    },
+    {
+      "id": "bordando-1",
+      "atividade": "bordando",
+      "titulo": "Bordando no papel",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Erick Azevedo, arte-educador e arquiteto",
+      "descricao": "Técnicas básicas de perfuração e bordado sobre papel.",
+      "local": "Espaço de Tecnologias e Artes",
+      "data": "2026-11-14",
+      "inicio": "14:00",
+      "fim": "16:00",
+      "entrada": "Grátis",
+      "classificacao": "16+",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "dan-1",
+      "atividade": "dan",
+      "titulo": "Dan, o que conta o arco-íris",
+      "tipo": "Contação de história",
+      "trilhas": [
+        "Iorubrá",
+        "Crianças"
+      ],
+      "com": "Marina Costa, contadora de histórias",
+      "descricao": "Depois de uma desavença entre Olodumáre e Onilê, Oxumarê precisa reequilibrar o mundo.",
+      "local": "Convivência",
+      "data": "2026-11-14",
+      "inicio": "16:00",
+      "fim": "17:00",
+      "entrada": "Grátis",
+      "classificacao": "Livre",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "ode-1",
+      "atividade": "ode",
+      "titulo": "Floresta de Odé",
+      "tipo": "Espetáculo",
+      "trilhas": [
+        "Iorubrá",
+        "Shows e espetáculos"
+      ],
+      "com": "Cia. Treme Terra",
+      "descricao": "Dança negra contemporânea inspirada nos arquétipos de Oxóssi. 60 min.",
+      "local": "Teatro",
+      "data": "2026-11-14",
+      "inicio": "20:00",
+      "fim": "21:00",
+      "entrada": "● R$ 15 · ■ R$ 25 · ▲ R$ 50",
+      "classificacao": "Livre",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "afrohits-1",
+      "atividade": "afrohits",
+      "titulo": "Afrohits: toada para erês",
+      "tipo": "Espetáculo",
+      "trilhas": [
+        "Iorubrá",
+        "Crianças",
+        "Shows e espetáculos"
+      ],
+      "com": "Grupo Trança de Teatro · direção de Aysha Nascimento",
+      "descricao": "No quintal de Tia Ciata, um passeio pelos ritmos afro-brasileiros: ijexá, samba, maracatu, afoxé e funk.",
+      "local": "Teatro",
+      "data": "2026-11-15",
+      "inicio": "16:00",
+      "fim": "17:00",
+      "entrada": "● R$ 12 · ■ R$ 20 · ▲ R$ 40 · grátis até 12 anos",
+      "classificacao": "Livre",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "denki-1",
+      "atividade": "denki",
+      "titulo": "Denki",
+      "tipo": "Show",
+      "trilhas": [
+        "Iorubrá",
+        "Shows e espetáculos"
+      ],
+      "com": "",
+      "descricao": "Cantor e guitarrista do interior paulista, entre R&B, hip-hop e música brasileira.",
+      "local": "Convivência",
+      "data": "2026-11-15",
+      "inicio": "17:00",
+      "fim": "18:30",
+      "entrada": "Grátis",
+      "classificacao": "Livre",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "caderno-1",
+      "atividade": "caderno",
+      "titulo": "Confecção de caderno",
+      "tipo": "Curso",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Ivanilde Monteiro, artesã, professora e pesquisadora",
+      "descricao": "Caderno de capa dura revestido de tecido, feito com cartonagem. Curso sequencial.",
+      "local": "Espaço de Tecnologias e Artes",
+      "data": "2026-11-18",
+      "inicio": "10:00",
+      "fim": "12:00",
+      "entrada": "Grátis",
+      "classificacao": "14+",
+      "acessibilidade": "",
+      "como_participar": "Inscrições online a partir das 14h de 11/11 (Credencial Plena) e 13/11 (público geral)"
+    },
+    {
+      "id": "caderno-2",
+      "atividade": "caderno",
+      "titulo": "Confecção de caderno",
+      "tipo": "Curso",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Ivanilde Monteiro, artesã, professora e pesquisadora",
+      "descricao": "Caderno de capa dura revestido de tecido, feito com cartonagem. Curso sequencial.",
+      "local": "Espaço de Tecnologias e Artes",
+      "data": "2026-11-25",
+      "inicio": "10:00",
+      "fim": "12:00",
+      "entrada": "Grátis",
+      "classificacao": "14+",
+      "acessibilidade": "",
+      "como_participar": "Inscrições online a partir das 14h de 11/11 (Credencial Plena) e 13/11 (público geral)"
+    },
+    {
+      "id": "afrofuturos-1",
+      "atividade": "afrofuturos",
+      "titulo": "Ancestralidade e afrofuturos: vozes de contrafluxo na luta antirracista",
+      "tipo": "Bate-papo",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Marco Pereira, Gabrelu e Prof.ª Chavosa · mediação de Daia Moura",
+      "descricao": "Conversa sobre estratégias de fortalecimento da população negra em Sorocaba.",
+      "local": "Teatro",
+      "data": "2026-11-18",
+      "inicio": "19:00",
+      "fim": "21:00",
+      "entrada": "Grátis",
+      "classificacao": "16+",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "adinkras-1",
+      "atividade": "adinkras",
+      "titulo": "Estampando adinkras",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Célia Harumi, educadora de tecnologias e artes",
+      "descricao": "Carimbos com símbolos adinkra do povo Akan para estampar papel e algodão cru.",
+      "local": "Espaço de Tecnologias e Artes",
+      "data": "2026-11-20",
+      "inicio": "14:00",
+      "fim": "16:00",
+      "entrada": "Grátis",
+      "classificacao": "12+",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "adinkras-2",
+      "atividade": "adinkras",
+      "titulo": "Estampando adinkras",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Célia Harumi, educadora de tecnologias e artes",
+      "descricao": "Carimbos com símbolos adinkra do povo Akan para estampar papel e algodão cru.",
+      "local": "Espaço de Tecnologias e Artes",
+      "data": "2026-11-21",
+      "inicio": "14:00",
+      "fim": "16:00",
+      "entrada": "Grátis",
+      "classificacao": "12+",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "lonatorta-1",
+      "atividade": "lonatorta",
+      "titulo": "O circo da lona torta",
+      "tipo": "Espetáculo",
+      "trilhas": [
+        "Iorubrá",
+        "Crianças",
+        "Shows e espetáculos"
+      ],
+      "com": "Circo da Lona Preta",
+      "descricao": "Uma trupe chega para se apresentar e descobre que um CEO diz ser dono da arena.",
+      "local": "Espaço de Exposições",
+      "data": "2026-11-20",
+      "inicio": "16:00",
+      "fim": "17:00",
+      "entrada": "Grátis",
+      "classificacao": "Livre",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "hugo-1",
+      "atividade": "hugo",
+      "titulo": "Hugo Rafael na Feira Crespa",
+      "tipo": "Show",
+      "trilhas": [
+        "Iorubrá",
+        "Shows e espetáculos"
+      ],
+      "com": "",
+      "descricao": "Do soul à MPB, com o finalista do The Voice Brasil 2021. Parte da Feira Crespa da Prefeitura.",
+      "local": "Parque das Águas",
+      "data": "2026-11-20",
+      "inicio": "18:40",
+      "fim": "20:00",
+      "entrada": "Grátis",
+      "classificacao": "Livre",
+      "acessibilidade": "",
+      "como_participar": "Rua Joaquim Ferreira Barbosa, 1450, Jd. Abaeté"
+    },
+    {
+      "id": "coco-1",
+      "atividade": "coco",
+      "titulo": "Bate o pé, roda o coco",
+      "tipo": "Espetáculo",
+      "trilhas": [
+        "Iorubrá",
+        "Crianças",
+        "Shows e espetáculos"
+      ],
+      "com": "Coco de Muié",
+      "descricao": "Show brincante com cirandas, cocos e trava-línguas.",
+      "local": "Convivência",
+      "data": "2026-11-21",
+      "inicio": "16:00",
+      "fim": "17:00",
+      "entrada": "Grátis",
+      "classificacao": "Livre",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "festa-1",
+      "atividade": "festa",
+      "titulo": "[Fé]sta",
+      "tipo": "Espetáculo",
+      "trilhas": [
+        "Iorubrá",
+        "Shows e espetáculos"
+      ],
+      "com": "Coletivo Prot{agô}nistas",
+      "descricao": "Circo como ritual de morte, nascimento, união e fé. 75 min.",
+      "local": "Teatro",
+      "data": "2026-11-21",
+      "inicio": "20:00",
+      "fim": "21:15",
+      "entrada": "● R$ 15 · ■ R$ 25 · ▲ R$ 50",
+      "classificacao": "Livre",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "candeeiro-1",
+      "atividade": "candeeiro",
+      "titulo": "A menina do candeeiro",
+      "tipo": "Espetáculo",
+      "trilhas": [
+        "Iorubrá",
+        "Crianças",
+        "Shows e espetáculos"
+      ],
+      "com": "Cia. EmbarcAções Teatrais · direção de Cecília Schucman",
+      "descricao": "Uma menina andarilha perde a luz do candeeiro e sai em busca de reacendê-la.",
+      "local": "Teatro",
+      "data": "2026-11-22",
+      "inicio": "16:00",
+      "fim": "17:00",
+      "entrada": "● R$ 12 · ■ R$ 20 · ▲ R$ 40 · grátis até 12 anos",
+      "classificacao": "Livre",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "meioperiodo-1",
+      "atividade": "meioperiodo",
+      "titulo": "Luccas Folha & Nyatta: Meio Período",
+      "tipo": "Show",
+      "trilhas": [
+        "Iorubrá",
+        "Shows e espetáculos"
+      ],
+      "com": "Participação de Yá Rosa",
+      "descricao": "Show do EP Meio Período, com banda ao vivo e DJ.",
+      "local": "Convivência",
+      "data": "2026-11-22",
+      "inicio": "17:00",
+      "fim": "18:30",
+      "entrada": "Grátis",
+      "classificacao": "Livre",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "contrafluxo-1",
+      "atividade": "contrafluxo",
+      "titulo": "Contrafluxo e resistência: movimento social negro",
+      "tipo": "Bate-papo",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Débora Francisco, DJ Mendez e Drika Martim · mediação de Magda Barbosa",
+      "descricao": "Vozes que constroem a consciência negra na região.",
+      "local": "Teatro",
+      "data": "2026-11-26",
+      "inicio": "19:00",
+      "fim": "21:00",
+      "entrada": "Grátis",
+      "classificacao": "16+",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "ivyson-1",
+      "atividade": "ivyson",
+      "titulo": "Ivyson",
+      "tipo": "Show",
+      "trilhas": [
+        "Iorubrá",
+        "Shows e espetáculos"
+      ],
+      "com": "",
+      "descricao": "Sucessos como Girassol e Conexão e canções do repertório recente.",
+      "local": "Teatro",
+      "data": "2026-11-27",
+      "inicio": "20:00",
+      "fim": "21:30",
+      "entrada": "● R$ 15 · ■ R$ 25 · ▲ R$ 50",
+      "classificacao": "Livre",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "bonecas-1",
+      "atividade": "bonecas",
+      "titulo": "Customizando bonecas negras",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Gleice Sales, educadora de tecnologias e artes",
+      "descricao": "Personalização de bonecas com tecidos, cabelos e acessórios, falando de identidade e representatividade.",
+      "local": "Espaço de Tecnologias e Artes",
+      "data": "2026-11-28",
+      "inicio": "14:00",
+      "fim": "16:00",
+      "entrada": "Grátis",
+      "classificacao": "16+",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "apolinaria-1",
+      "atividade": "apolinaria",
+      "titulo": "Clube de leitura: Apolinária, de Bianca Santana",
+      "tipo": "Bate-papo",
+      "trilhas": [
+        "Iorubrá",
+        "Cursos e encontros"
+      ],
+      "com": "Lourdes Lieje, produtora cultural e mediadora de leitura",
+      "descricao": "Memória familiar e pesquisa histórica nas vozes de neta e avó.",
+      "local": "Biblioteca",
+      "data": "2026-11-28",
+      "inicio": "14:00",
+      "fim": "17:00",
+      "entrada": "Grátis",
+      "classificacao": "16+",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "vaivai-1",
+      "atividade": "vaivai",
+      "titulo": "Vai! Vai!! Vai!!!",
+      "tipo": "Espetáculo",
+      "trilhas": [
+        "Iorubrá",
+        "Crianças",
+        "Shows e espetáculos"
+      ],
+      "com": "Antonio Mendoza, o palhaço Chungo Malungo",
+      "descricao": "Equilíbrio no arame como metáfora da vida, entre tropeços e gargalhadas.",
+      "local": "Espaço de Exposições",
+      "data": "2026-11-28",
+      "inicio": "16:00",
+      "fim": "17:00",
+      "entrada": "Grátis",
+      "classificacao": "Livre",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "penochao-1",
+      "atividade": "penochao",
+      "titulo": "Pé no chão, boca no verso",
+      "tipo": "Contação de história",
+      "trilhas": [
+        "Iorubrá",
+        "Crianças"
+      ],
+      "com": "Xirê de Quintal",
+      "descricao": "Histórias musicadas com coco de roda e ciranda, sobre mestras da cultura popular.",
+      "local": "Convivência",
+      "data": "2026-11-29",
+      "inicio": "16:00",
+      "fim": "17:00",
+      "entrada": "Grátis",
+      "classificacao": "Livre",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "murray-1",
+      "atividade": "murray",
+      "titulo": "Daniel Murray: violão solo",
+      "tipo": "Concerto",
+      "trilhas": [
+        "Shows e espetáculos"
+      ],
+      "com": "",
+      "descricao": "Villa-Lobos, Egberto Gismonti e composições autorais.",
+      "local": "Teatro",
+      "data": "2026-11-01",
+      "inicio": "11:00",
+      "fim": "12:15",
+      "entrada": "Grátis",
+      "classificacao": "Livre",
+      "acessibilidade": "",
+      "como_participar": "Retirada de ingressos 1 hora antes"
+    },
+    {
+      "id": "jazzcombo-1",
+      "atividade": "jazzcombo",
+      "titulo": "Jazz Combo do Conservatório de Tatuí convida Fábio Leal",
+      "tipo": "Show · TrilhaJazz",
+      "trilhas": [
+        "Shows e espetáculos"
+      ],
+      "com": "",
+      "descricao": "Arranjos inéditos de músicas de Fábio Leal e clássicos brasileiros, com muita improvisação.",
+      "local": "Teatro",
+      "data": "2026-11-06",
+      "inicio": "20:00",
+      "fim": "21:30",
+      "entrada": "Grátis",
+      "classificacao": "Livre",
+      "acessibilidade": "",
+      "como_participar": "Retirada de ingressos 1 hora antes"
+    },
+    {
+      "id": "banda-1",
+      "atividade": "banda",
+      "titulo": "Banda Sinfônica do Exército Brasileiro",
+      "tipo": "Show · TrilhaJazz",
+      "trilhas": [
+        "Shows e espetáculos"
+      ],
+      "com": "Regência de Dario Sotelo · solista Ricardo Camargo (euphonium)",
+      "descricao": "Concerto da banda sinfônica com regente convidado.",
+      "local": "Teatro",
+      "data": "2026-11-08",
+      "inicio": "16:00",
+      "fim": "17:30",
+      "entrada": "Grátis",
+      "classificacao": "Livre",
+      "acessibilidade": "",
+      "como_participar": "Retirada de ingressos 1 hora antes"
+    },
+    {
+      "id": "asfalto-1",
+      "atividade": "asfalto",
+      "titulo": "Deriva performativa: Asfalto rasgado",
+      "tipo": "Intervenção",
+      "trilhas": [
+        "Shows e espetáculos"
+      ],
+      "com": "Uýra Sodoma",
+      "descricao": "Percurso do Sesc até o Parque da Biquinha, com a artista como imagem viva feita de elementos orgânicos.",
+      "local": "Convivência",
+      "data": "2026-11-28",
+      "inicio": "15:00",
+      "fim": "16:30",
+      "entrada": "Grátis",
+      "classificacao": "Livre",
+      "acessibilidade": "",
+      "como_participar": "A ação termina no Parque da Biquinha e não retorna ao Sesc"
+    },
+    {
+      "id": "kunyn-1",
+      "atividade": "kunyn",
+      "titulo": "Deriva cênica: De como os corpos podem substituir as ideias",
+      "tipo": "Intervenção",
+      "trilhas": [
+        "Shows e espetáculos"
+      ],
+      "com": "Teatro Kunyn",
+      "descricao": "Em grupos e guiado por dramaturgia sonora, o público caminha até o Parque da Biquinha.",
+      "local": "Sala de Oficinas",
+      "data": "2026-11-28",
+      "inicio": "15:30",
+      "fim": "17:00",
+      "entrada": "Grátis",
+      "classificacao": "Livre",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes. A ação termina no Parque da Biquinha"
+    },
+    {
+      "id": "kunyn-2",
+      "atividade": "kunyn",
+      "titulo": "Deriva cênica: De como os corpos podem substituir as ideias",
+      "tipo": "Intervenção",
+      "trilhas": [
+        "Shows e espetáculos"
+      ],
+      "com": "Teatro Kunyn",
+      "descricao": "Em grupos e guiado por dramaturgia sonora, o público caminha até o Parque da Biquinha.",
+      "local": "Sala de Oficinas",
+      "data": "2026-11-29",
+      "inicio": "15:30",
+      "fim": "17:00",
+      "entrada": "Grátis",
+      "classificacao": "Livre",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes. A ação termina no Parque da Biquinha"
+    },
+    {
+      "id": "furacao-1",
+      "atividade": "furacao",
+      "titulo": "Furacão",
+      "tipo": "Espetáculo",
+      "trilhas": [
+        "Shows e espetáculos"
+      ],
+      "com": "Amok Teatro",
+      "descricao": "Sobre o furacão Katrina e o peso da desigualdade nas tragédias. 70 min.",
+      "local": "Quilombo Cafundó",
+      "data": "2026-11-29",
+      "inicio": "17:00",
+      "fim": "18:10",
+      "entrada": "Grátis",
+      "classificacao": "Livre",
+      "acessibilidade": "",
+      "como_participar": "R. Dois, Cafundó, Salto de Pirapora/SP"
+    },
+    {
+      "id": "arcond-1",
+      "atividade": "arcond",
+      "titulo": "Ar condicionado",
+      "tipo": "CineCafé · cinema angolano",
+      "trilhas": [
+        "Cinema"
+      ],
+      "com": "Direção: Fradique · drama · 72 min",
+      "descricao": "Aparelhos de ar-condicionado começam a cair dos prédios de Luanda.",
+      "local": "Teatro",
+      "data": "2026-11-10",
+      "inicio": "19:00",
+      "fim": "20:15",
+      "entrada": "Grátis",
+      "classificacao": "Livre",
+      "acessibilidade": "",
+      "como_participar": "Retirada de ingressos 1 hora antes"
+    },
+    {
+      "id": "passos-1",
+      "atividade": "passos",
+      "titulo": "Para lá dos meus passos",
+      "tipo": "CineCafé · cinema angolano",
+      "trilhas": [
+        "Cinema"
+      ],
+      "com": "Direção: Kamy Lara · documentário · 67 min",
+      "descricao": "Cinco bailarinos chegam a Luanda e reinventam suas tradições.",
+      "local": "Teatro",
+      "data": "2026-11-17",
+      "inicio": "19:00",
+      "fim": "20:10",
+      "entrada": "Grátis",
+      "classificacao": "Livre",
+      "acessibilidade": "",
+      "como_participar": "Retirada de ingressos 1 hora antes"
+    },
+    {
+      "id": "chines-1",
+      "atividade": "chines",
+      "titulo": "Nossa Senhora da loja do chinês",
+      "tipo": "CineCafé · cinema angolano",
+      "trilhas": [
+        "Cinema"
+      ],
+      "com": "Direção: Ery Claver · drama · 98 min",
+      "descricao": "Uma imagem de plástico de Nossa Senhora muda a vida de um bairro de Luanda.",
+      "local": "Teatro",
+      "data": "2026-11-24",
+      "inicio": "19:00",
+      "fim": "20:40",
+      "entrada": "Grátis",
+      "classificacao": "Livre",
+      "acessibilidade": "",
+      "como_participar": "Retirada de ingressos 1 hora antes"
+    },
+    {
+      "id": "reflexao-1",
+      "atividade": "reflexao",
+      "titulo": "Cinema em reflexão",
+      "tipo": "Debate",
+      "trilhas": [
+        "Cinema",
+        "Cursos e encontros"
+      ],
+      "com": "Marco Antonio Fera, ator, cantor e pesquisador",
+      "descricao": "Conversa sobre o filme logo após cada sessão do CineCafé.",
+      "local": "Teatro",
+      "data": "2026-11-10",
+      "inicio": "21:00",
+      "fim": "21:30",
+      "entrada": "Grátis",
+      "classificacao": "14+",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "reflexao-2",
+      "atividade": "reflexao",
+      "titulo": "Cinema em reflexão",
+      "tipo": "Debate",
+      "trilhas": [
+        "Cinema",
+        "Cursos e encontros"
+      ],
+      "com": "Marco Antonio Fera, ator, cantor e pesquisador",
+      "descricao": "Conversa sobre o filme logo após cada sessão do CineCafé.",
+      "local": "Teatro",
+      "data": "2026-11-17",
+      "inicio": "21:00",
+      "fim": "21:30",
+      "entrada": "Grátis",
+      "classificacao": "14+",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "reflexao-3",
+      "atividade": "reflexao",
+      "titulo": "Cinema em reflexão",
+      "tipo": "Debate",
+      "trilhas": [
+        "Cinema",
+        "Cursos e encontros"
+      ],
+      "com": "Marco Antonio Fera, ator, cantor e pesquisador",
+      "descricao": "Conversa sobre o filme logo após cada sessão do CineCafé.",
+      "local": "Teatro",
+      "data": "2026-11-24",
+      "inicio": "21:00",
+      "fim": "21:30",
+      "entrada": "Grátis",
+      "classificacao": "14+",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "cabracega-1",
+      "atividade": "cabracega",
+      "titulo": "Cabra-Cega: sessão especial e bate-papo",
+      "tipo": "Exibição e bate-papo",
+      "trilhas": [
+        "Cinema",
+        "Cursos e encontros"
+      ],
+      "com": "Débora Duboc, atriz",
+      "descricao": "Exibição do longa sobre a resistência à ditadura, seguida de conversa com a atriz.",
+      "local": "Teatro",
+      "data": "2026-11-05",
+      "inicio": "14:00",
+      "fim": "17:00",
+      "entrada": "Grátis",
+      "classificacao": "16+",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "conversas-1",
+      "atividade": "conversas",
+      "titulo": "Conversas entre nós",
+      "tipo": "Encontro",
+      "trilhas": [
+        "Cursos e encontros"
+      ],
+      "com": "José Henrique Moura e Tom Rodrigues, psicólogos",
+      "descricao": "Roda quinzenal de acolhimento para a comunidade LGBTQIAPN+.",
+      "local": "Sala 2",
+      "data": "2026-11-04",
+      "inicio": "19:00",
+      "fim": "21:00",
+      "entrada": "Grátis",
+      "classificacao": "16+",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "conversas-2",
+      "atividade": "conversas",
+      "titulo": "Conversas entre nós",
+      "tipo": "Encontro",
+      "trilhas": [
+        "Cursos e encontros"
+      ],
+      "com": "José Henrique Moura e Tom Rodrigues, psicólogos",
+      "descricao": "Roda quinzenal de acolhimento para a comunidade LGBTQIAPN+.",
+      "local": "Sala 2",
+      "data": "2026-11-18",
+      "inicio": "19:00",
+      "fim": "21:00",
+      "entrada": "Grátis",
+      "classificacao": "16+",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "indigenas-1",
+      "atividade": "indigenas",
+      "titulo": "Mulheres indígenas: autocuidado e saúde no pós-parto",
+      "tipo": "Debate",
+      "trilhas": [
+        "Cursos e encontros"
+      ],
+      "com": "Educadores dos povos Ticuna, Tukano e Kubeo (UFSCar Sorocaba)",
+      "descricao": "Saberes ancestrais e orientação de saúde para gestantes, puérperas e famílias.",
+      "local": "Sala 1",
+      "data": "2026-11-15",
+      "inicio": "14:00",
+      "fim": "16:00",
+      "entrada": "Grátis",
+      "classificacao": "12+",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "encantar-1",
+      "atividade": "encantar",
+      "titulo": "A arte de encantar e contar histórias para todas as infâncias",
+      "tipo": "Debate",
+      "trilhas": [
+        "Cursos e encontros"
+      ],
+      "com": "Filipe Macedo, escritor e contador de histórias",
+      "descricao": "Contação de histórias como ferramenta para crianças típicas e atípicas.",
+      "local": "Teatro",
+      "data": "2026-11-25",
+      "inicio": "09:00",
+      "fim": "13:00",
+      "entrada": "Grátis",
+      "classificacao": "Todas as idades",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "librasp-1",
+      "atividade": "librasp",
+      "titulo": "Libras pintadas: arte e língua de sinais",
+      "tipo": "Vivência · Virada Inclusiva",
+      "trilhas": [
+        "Cursos e encontros",
+        "Crianças"
+      ],
+      "com": "Jéssica Iara e Priscila Campos, intérpretes de Libras",
+      "descricao": "Desenhos com tinta atóxica para aprender sinais ligados à natureza.",
+      "local": "Convivência do Ginásio",
+      "data": "2026-11-28",
+      "inicio": "10:30",
+      "fim": "12:00",
+      "entrada": "Grátis",
+      "classificacao": "3+",
+      "acessibilidade": "Libras",
+      "como_participar": "Retirada de senhas 30 minutos antes"
+    },
+    {
+      "id": "librasp-2",
+      "atividade": "librasp",
+      "titulo": "Libras pintadas: arte e língua de sinais",
+      "tipo": "Vivência · Virada Inclusiva",
+      "trilhas": [
+        "Cursos e encontros",
+        "Crianças"
+      ],
+      "com": "Jéssica Iara e Priscila Campos, intérpretes de Libras",
+      "descricao": "Desenhos com tinta atóxica para aprender sinais ligados à natureza.",
+      "local": "Convivência do Ginásio",
+      "data": "2026-11-29",
+      "inicio": "10:30",
+      "fim": "12:00",
+      "entrada": "Grátis",
+      "classificacao": "3+",
+      "acessibilidade": "Libras",
+      "como_participar": "Retirada de senhas 30 minutos antes"
+    },
+    {
+      "id": "latente-1",
+      "atividade": "latente",
+      "titulo": "Lançamento da Revista Latente",
+      "tipo": "Bate-papo",
+      "trilhas": [
+        "Cursos e encontros"
+      ],
+      "com": "Artistas, curadores e equipe da revista",
+      "descricao": "Celebração e debate sobre a nova edição da revista de artes visuais.",
+      "local": "Sala 1",
+      "data": "2026-11-06",
+      "inicio": "19:00",
+      "fim": "21:00",
+      "entrada": "Grátis",
+      "classificacao": "16+",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "laboratorio-1",
+      "atividade": "laboratorio",
+      "titulo": "Laboratório de redes de criação",
+      "tipo": "Bate-papo",
+      "trilhas": [
+        "Cursos e encontros"
+      ],
+      "com": "Célia Barros, Gabriela Leirias e Lindsay Ribeiro",
+      "descricao": "Oito edições da Revista Latente em debate sobre a cena artística do interior paulista.",
+      "local": "Espaço de Tecnologias e Artes",
+      "data": "2026-11-07",
+      "inicio": "10:30",
+      "fim": "13:30",
+      "entrada": "Grátis",
+      "classificacao": "16+",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 30 minutos antes"
+    },
+    {
+      "id": "ilustradoria-1",
+      "atividade": "ilustradoria",
+      "titulo": "Ilustradoria com Alex Mir",
+      "tipo": "Aula aberta",
+      "trilhas": [
+        "Cursos e encontros"
+      ],
+      "com": "Alex Mir, quadrinista · mediação de Marcel Bartholo",
+      "descricao": "O criador da série Orixás conta sua trajetória nos quadrinhos.",
+      "local": "Convivência",
+      "data": "2026-11-26",
+      "inicio": "19:00",
+      "fim": "21:00",
+      "entrada": "Grátis",
+      "classificacao": "6+",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "acessibilizarte-1",
+      "atividade": "acessibilizarte",
+      "titulo": "Acessibilizarte",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Cursos e encontros"
+      ],
+      "com": "João Mendes, intérprete de Libras",
+      "descricao": "Libras na prática e orientações sobre a janela do intérprete no audiovisual.",
+      "local": "Sala 1",
+      "data": "2026-11-06",
+      "inicio": "09:30",
+      "fim": "11:30",
+      "entrada": "Grátis",
+      "classificacao": "16+",
+      "acessibilidade": "Libras",
+      "como_participar": "Retirada de senhas 30 minutos antes"
+    },
+    {
+      "id": "leiamulheres-1",
+      "atividade": "leiamulheres",
+      "titulo": "Leia Mulheres: Caminhando com os mortos",
+      "tipo": "Bate-papo",
+      "trilhas": [
+        "Cursos e encontros"
+      ],
+      "com": "Bruna Bengozi, mediadora",
+      "descricao": "Clube de leitura sobre o romance de Micheliny Verunschk.",
+      "local": "Biblioteca",
+      "data": "2026-11-14",
+      "inicio": "10:30",
+      "fim": "12:30",
+      "entrada": "Grátis",
+      "classificacao": "14+",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "escrita-1",
+      "atividade": "escrita",
+      "titulo": "Clube de escrita Sorocaba",
+      "tipo": "Encontro",
+      "trilhas": [
+        "Cursos e encontros"
+      ],
+      "com": "Cacau Braga, escritora e produtora cultural",
+      "descricao": "Leituras, exercícios e troca entre pessoas que escrevem.",
+      "local": "Sala 1",
+      "data": "2026-11-24",
+      "inicio": "19:00",
+      "fim": "21:00",
+      "entrada": "Grátis",
+      "classificacao": "16+",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "feira-1",
+      "atividade": "feira",
+      "titulo": "Feira de alimentos agroecológicos e artesanato",
+      "tipo": "Feira",
+      "trilhas": [
+        "Cursos e encontros"
+      ],
+      "com": "Produtores da região de Sorocaba",
+      "descricao": "Alimentos agroecológicos e artesanato. Traga sua sacola retornável.",
+      "local": "Espaço de Exposições",
+      "data": "2026-11-07",
+      "inicio": "10:00",
+      "fim": "15:00",
+      "entrada": "Entrada gratuita",
+      "classificacao": "Todas as idades",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "remedio-1",
+      "atividade": "remedio",
+      "titulo": "Remédio: não usou, descartou!",
+      "tipo": "Intervenção",
+      "trilhas": [
+        "Cursos e encontros"
+      ],
+      "com": "Estudantes de medicina da UNIP Sorocaba",
+      "descricao": "Descarte correto de medicamentos, automedicação e atendimento básico em saúde.",
+      "local": "Sala de Oficinas",
+      "data": "2026-11-14",
+      "inicio": "10:00",
+      "fim": "13:00",
+      "entrada": "Grátis",
+      "classificacao": "18+",
+      "acessibilidade": "",
+      "como_participar": "Inscrições online a partir das 14h de 4/11 (Credencial Plena) e 6/11 (público geral)"
+    },
+    {
+      "id": "resid-kunyn-1",
+      "atividade": "resid-kunyn",
+      "titulo": "Residência Meu peito é uma rua!",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Cursos e encontros"
+      ],
+      "com": "Teatro Kunyn",
+      "descricao": "Residência para atores e estudantes, que entram na deriva cênica dos dias 28 e 29.",
+      "local": "Sala de Oficinas",
+      "data": "2026-11-14",
+      "inicio": "14:00",
+      "fim": "18:00",
+      "entrada": "Grátis",
+      "classificacao": "18+",
+      "acessibilidade": "",
+      "como_participar": "Inscrições de 1 a 8/11 em sescsp.org.br/sorocaba, com seleção"
+    },
+    {
+      "id": "resid-kunyn-2",
+      "atividade": "resid-kunyn",
+      "titulo": "Residência Meu peito é uma rua!",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Cursos e encontros"
+      ],
+      "com": "Teatro Kunyn",
+      "descricao": "Residência para atores e estudantes, que entram na deriva cênica dos dias 28 e 29.",
+      "local": "Sala de Oficinas",
+      "data": "2026-11-15",
+      "inicio": "14:00",
+      "fim": "18:00",
+      "entrada": "Grátis",
+      "classificacao": "18+",
+      "acessibilidade": "",
+      "como_participar": "Inscrições de 1 a 8/11 em sescsp.org.br/sorocaba, com seleção"
+    },
+    {
+      "id": "resid-kunyn-3",
+      "atividade": "resid-kunyn",
+      "titulo": "Residência Meu peito é uma rua!",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Cursos e encontros"
+      ],
+      "com": "Teatro Kunyn",
+      "descricao": "Residência para atores e estudantes, que entram na deriva cênica dos dias 28 e 29.",
+      "local": "Sala de Oficinas",
+      "data": "2026-11-21",
+      "inicio": "14:00",
+      "fim": "18:00",
+      "entrada": "Grátis",
+      "classificacao": "18+",
+      "acessibilidade": "",
+      "como_participar": "Inscrições de 1 a 8/11 em sescsp.org.br/sorocaba, com seleção"
+    },
+    {
+      "id": "resid-kunyn-4",
+      "atividade": "resid-kunyn",
+      "titulo": "Residência Meu peito é uma rua!",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Cursos e encontros"
+      ],
+      "com": "Teatro Kunyn",
+      "descricao": "Residência para atores e estudantes, que entram na deriva cênica dos dias 28 e 29.",
+      "local": "Sala de Oficinas",
+      "data": "2026-11-22",
+      "inicio": "14:00",
+      "fim": "18:00",
+      "entrada": "Grátis",
+      "classificacao": "18+",
+      "acessibilidade": "",
+      "como_participar": "Inscrições de 1 a 8/11 em sescsp.org.br/sorocaba, com seleção"
+    },
+    {
+      "id": "morfose-1",
+      "atividade": "morfose",
+      "titulo": "Residência Morfose: maquiagem criativa e seres em si",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Cursos e encontros"
+      ],
+      "com": "Uýra Sodoma, artista indígena",
+      "descricao": "Maquiagem intuitiva e elementos orgânicos em criações registradas em foto.",
+      "local": "Sala de Oficinas",
+      "data": "2026-11-25",
+      "inicio": "10:00",
+      "fim": "17:00",
+      "entrada": "Grátis",
+      "classificacao": "16+",
+      "acessibilidade": "",
+      "como_participar": "Inscrições de 10 a 20/11 em sescsp.org.br/sorocaba, com seleção"
+    },
+    {
+      "id": "morfose-2",
+      "atividade": "morfose",
+      "titulo": "Residência Morfose: maquiagem criativa e seres em si",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Cursos e encontros"
+      ],
+      "com": "Uýra Sodoma, artista indígena",
+      "descricao": "Maquiagem intuitiva e elementos orgânicos em criações registradas em foto.",
+      "local": "Sala de Oficinas",
+      "data": "2026-11-26",
+      "inicio": "10:00",
+      "fim": "17:00",
+      "entrada": "Grátis",
+      "classificacao": "16+",
+      "acessibilidade": "",
+      "como_participar": "Inscrições de 10 a 20/11 em sescsp.org.br/sorocaba, com seleção"
+    },
+    {
+      "id": "olele-1",
+      "atividade": "olele",
+      "titulo": "Olelê brincando bantu",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Cursos e encontros",
+        "Crianças"
+      ],
+      "com": "Fabio Mukanya, pesquisador e arte-educador",
+      "descricao": "Brincadeiras de Angola, Moçambique e Congo e construção de brinquedos.",
+      "local": "Quilombo Cafundó",
+      "data": "2026-11-29",
+      "inicio": "14:00",
+      "fim": "15:00",
+      "entrada": "Grátis",
+      "classificacao": "Todas as idades",
+      "acessibilidade": "",
+      "como_participar": "R. Dois, Cafundó, Salto de Pirapora/SP"
+    },
+    {
+      "id": "yoga-1",
+      "atividade": "yoga",
+      "titulo": "Manhãs de práticas corporais: hatha yoga",
+      "tipo": "Aula aberta",
+      "trilhas": [
+        "Esporte"
+      ],
+      "com": "Educadores de atividades físico-esportivas",
+      "descricao": "Posturas, respiração e relaxamento. Traga seu mat, se tiver.",
+      "local": "Ginásio",
+      "data": "2026-11-01",
+      "inicio": "09:00",
+      "fim": "10:00",
+      "entrada": "Grátis",
+      "classificacao": "12+",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "yoga-2",
+      "atividade": "yoga",
+      "titulo": "Manhãs de práticas corporais: hatha yoga",
+      "tipo": "Aula aberta",
+      "trilhas": [
+        "Esporte"
+      ],
+      "com": "Educadores de atividades físico-esportivas",
+      "descricao": "Posturas, respiração e relaxamento. Traga seu mat, se tiver.",
+      "local": "Ginásio",
+      "data": "2026-11-08",
+      "inicio": "09:00",
+      "fim": "10:00",
+      "entrada": "Grátis",
+      "classificacao": "12+",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "yoga-3",
+      "atividade": "yoga",
+      "titulo": "Manhãs de práticas corporais: hatha yoga",
+      "tipo": "Aula aberta",
+      "trilhas": [
+        "Esporte"
+      ],
+      "com": "Educadores de atividades físico-esportivas",
+      "descricao": "Posturas, respiração e relaxamento. Traga seu mat, se tiver.",
+      "local": "Ginásio",
+      "data": "2026-11-15",
+      "inicio": "09:00",
+      "fim": "10:00",
+      "entrada": "Grátis",
+      "classificacao": "12+",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "yoga-4",
+      "atividade": "yoga",
+      "titulo": "Manhãs de práticas corporais: hatha yoga",
+      "tipo": "Aula aberta",
+      "trilhas": [
+        "Esporte"
+      ],
+      "com": "Educadores de atividades físico-esportivas",
+      "descricao": "Posturas, respiração e relaxamento. Traga seu mat, se tiver.",
+      "local": "Ginásio",
+      "data": "2026-11-22",
+      "inicio": "09:00",
+      "fim": "10:00",
+      "entrada": "Grátis",
+      "classificacao": "12+",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "yoga-5",
+      "atividade": "yoga",
+      "titulo": "Manhãs de práticas corporais: hatha yoga",
+      "tipo": "Aula aberta",
+      "trilhas": [
+        "Esporte"
+      ],
+      "com": "Educadores de atividades físico-esportivas",
+      "descricao": "Posturas, respiração e relaxamento. Traga seu mat, se tiver.",
+      "local": "Ginásio",
+      "data": "2026-11-29",
+      "inicio": "09:00",
+      "fim": "10:00",
+      "entrada": "Grátis",
+      "classificacao": "12+",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "passarinho-la-1",
+      "atividade": "passarinho-la",
+      "titulo": "Passarinho de fio de lã",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Angélica Felício e Rodrigo Bozzola",
+      "descricao": "Conversa sobre as aves da cidade e um passarinho de lã para levar.",
+      "local": "Sala 1",
+      "data": "2026-11-01",
+      "inicio": "10:30",
+      "fim": "12:30",
+      "entrada": "Grátis",
+      "classificacao": "4 a 12 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 30 minutos antes"
+    },
+    {
+      "id": "miudezas-1",
+      "atividade": "miudezas",
+      "titulo": "Miudezas",
+      "tipo": "Vivência",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Cia. Vôos",
+      "descricao": "Para adultos e bebês: exploração livre do movimento. Turmas às 10h30 e às 12h.",
+      "local": "Sala de Oficinas",
+      "data": "2026-11-01",
+      "inicio": "10:30",
+      "fim": "13:00",
+      "entrada": "Grátis",
+      "classificacao": "Até 2 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 30 minutos antes"
+    },
+    {
+      "id": "miudezas-2",
+      "atividade": "miudezas",
+      "titulo": "Miudezas",
+      "tipo": "Vivência",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Cia. Vôos",
+      "descricao": "Para adultos e bebês: exploração livre do movimento. Turmas às 10h30 e às 12h.",
+      "local": "Sala de Oficinas",
+      "data": "2026-11-02",
+      "inicio": "10:30",
+      "fim": "13:00",
+      "entrada": "Grátis",
+      "classificacao": "Até 2 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 30 minutos antes"
+    },
+    {
+      "id": "99cm-1",
+      "atividade": "99cm",
+      "titulo": "99 cm",
+      "tipo": "Espetáculo",
+      "trilhas": [
+        "Crianças",
+        "Shows e espetáculos"
+      ],
+      "com": "Iara Gueller, aerealista",
+      "descricao": "Objetos do dia a dia ganham novas funções nos bastidores do circo.",
+      "local": "Espaço de Exposições",
+      "data": "2026-11-01",
+      "inicio": "16:00",
+      "fim": "17:00",
+      "entrada": "Grátis",
+      "classificacao": "Livre",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "miniguia-1",
+      "atividade": "miniguia",
+      "titulo": "Miniguia de aves em pano",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Ressigi, costurando significados",
+      "descricao": "Livreto de tecido com aves brasileiras, seu habitat e alimento.",
+      "local": "Sala 1",
+      "data": "2026-11-02",
+      "inicio": "10:30",
+      "fim": "12:30",
+      "entrada": "Grátis",
+      "classificacao": "4 a 12 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 30 minutos antes"
+    },
+    {
+      "id": "artebebe-1",
+      "atividade": "artebebe",
+      "titulo": "Hoje é dia de arte, bebê!",
+      "tipo": "Vivência",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Alan Pablo, educador do Espaço de Brincar",
+      "descricao": "Música e brinquedos não estruturados para bebês. Duas turmas por dia.",
+      "local": "Sala 2",
+      "data": "2026-11-05",
+      "inicio": "10:00",
+      "fim": "12:20",
+      "entrada": "Grátis",
+      "classificacao": "Até 2 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "artebebe-2",
+      "atividade": "artebebe",
+      "titulo": "Hoje é dia de arte, bebê!",
+      "tipo": "Vivência",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Alan Pablo, educador do Espaço de Brincar",
+      "descricao": "Música e brinquedos não estruturados para bebês. Duas turmas por dia.",
+      "local": "Sala 2",
+      "data": "2026-11-10",
+      "inicio": "14:30",
+      "fim": "17:10",
+      "entrada": "Grátis",
+      "classificacao": "Até 2 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "artebebe-3",
+      "atividade": "artebebe",
+      "titulo": "Hoje é dia de arte, bebê!",
+      "tipo": "Vivência",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Alan Pablo, educador do Espaço de Brincar",
+      "descricao": "Música e brinquedos não estruturados para bebês. Duas turmas por dia.",
+      "local": "Sala 2",
+      "data": "2026-11-12",
+      "inicio": "10:00",
+      "fim": "12:20",
+      "entrada": "Grátis",
+      "classificacao": "Até 2 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "artebebe-4",
+      "atividade": "artebebe",
+      "titulo": "Hoje é dia de arte, bebê!",
+      "tipo": "Vivência",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Alan Pablo, educador do Espaço de Brincar",
+      "descricao": "Música e brinquedos não estruturados para bebês. Duas turmas por dia.",
+      "local": "Sala 2",
+      "data": "2026-11-17",
+      "inicio": "14:30",
+      "fim": "17:10",
+      "entrada": "Grátis",
+      "classificacao": "Até 2 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "artebebe-5",
+      "atividade": "artebebe",
+      "titulo": "Hoje é dia de arte, bebê!",
+      "tipo": "Vivência",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Alan Pablo, educador do Espaço de Brincar",
+      "descricao": "Música e brinquedos não estruturados para bebês. Duas turmas por dia.",
+      "local": "Sala 2",
+      "data": "2026-11-19",
+      "inicio": "10:00",
+      "fim": "12:20",
+      "entrada": "Grátis",
+      "classificacao": "Até 2 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "artebebe-6",
+      "atividade": "artebebe",
+      "titulo": "Hoje é dia de arte, bebê!",
+      "tipo": "Vivência",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Alan Pablo, educador do Espaço de Brincar",
+      "descricao": "Música e brinquedos não estruturados para bebês. Duas turmas por dia.",
+      "local": "Sala 2",
+      "data": "2026-11-24",
+      "inicio": "14:30",
+      "fim": "17:10",
+      "entrada": "Grátis",
+      "classificacao": "Até 2 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "artebebe-7",
+      "atividade": "artebebe",
+      "titulo": "Hoje é dia de arte, bebê!",
+      "tipo": "Vivência",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Alan Pablo, educador do Espaço de Brincar",
+      "descricao": "Música e brinquedos não estruturados para bebês. Duas turmas por dia.",
+      "local": "Sala 2",
+      "data": "2026-11-26",
+      "inicio": "10:00",
+      "fim": "12:20",
+      "entrada": "Grátis",
+      "classificacao": "Até 2 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "fazendoarte-1",
+      "atividade": "fazendoarte",
+      "titulo": "Lugar de criança é fazendo arte!",
+      "tipo": "Vivência",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Alan Pablo, educador do Espaço de Brincar",
+      "descricao": "Ateliê de experimentação para a primeira infância.",
+      "local": "Sala 2",
+      "data": "2026-11-05",
+      "inicio": "14:00",
+      "fim": "16:00",
+      "entrada": "Grátis",
+      "classificacao": "3 a 6 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "fazendoarte-2",
+      "atividade": "fazendoarte",
+      "titulo": "Lugar de criança é fazendo arte!",
+      "tipo": "Vivência",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Alan Pablo, educador do Espaço de Brincar",
+      "descricao": "Ateliê de experimentação para a primeira infância.",
+      "local": "Sala 2",
+      "data": "2026-11-12",
+      "inicio": "14:00",
+      "fim": "16:00",
+      "entrada": "Grátis",
+      "classificacao": "3 a 6 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "fazendoarte-3",
+      "atividade": "fazendoarte",
+      "titulo": "Lugar de criança é fazendo arte!",
+      "tipo": "Vivência",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Alan Pablo, educador do Espaço de Brincar",
+      "descricao": "Ateliê de experimentação para a primeira infância.",
+      "local": "Sala 2",
+      "data": "2026-11-19",
+      "inicio": "14:00",
+      "fim": "16:00",
+      "entrada": "Grátis",
+      "classificacao": "3 a 6 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "fazendoarte-4",
+      "atividade": "fazendoarte",
+      "titulo": "Lugar de criança é fazendo arte!",
+      "tipo": "Vivência",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Alan Pablo, educador do Espaço de Brincar",
+      "descricao": "Ateliê de experimentação para a primeira infância.",
+      "local": "Sala 2",
+      "data": "2026-11-26",
+      "inicio": "14:00",
+      "fim": "16:00",
+      "entrada": "Grátis",
+      "classificacao": "3 a 6 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "lebebe-1",
+      "atividade": "lebebe",
+      "titulo": "Lê, bebê!!!",
+      "tipo": "Vivência",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Alan Pablo, educador do Espaço de Brincar",
+      "descricao": "Mediação de leitura para bebês e suas famílias.",
+      "local": "Biblioteca",
+      "data": "2026-11-06",
+      "inicio": "16:00",
+      "fim": "17:00",
+      "entrada": "Grátis",
+      "classificacao": "Até 2 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas antes da atividade"
+    },
+    {
+      "id": "lebebe-2",
+      "atividade": "lebebe",
+      "titulo": "Lê, bebê!!!",
+      "tipo": "Vivência",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Alan Pablo, educador do Espaço de Brincar",
+      "descricao": "Mediação de leitura para bebês e suas famílias.",
+      "local": "Biblioteca",
+      "data": "2026-11-13",
+      "inicio": "16:00",
+      "fim": "17:00",
+      "entrada": "Grátis",
+      "classificacao": "Até 2 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas antes da atividade"
+    },
+    {
+      "id": "lebebe-3",
+      "atividade": "lebebe",
+      "titulo": "Lê, bebê!!!",
+      "tipo": "Vivência",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Alan Pablo, educador do Espaço de Brincar",
+      "descricao": "Mediação de leitura para bebês e suas famílias.",
+      "local": "Biblioteca",
+      "data": "2026-11-20",
+      "inicio": "10:30",
+      "fim": "12:00",
+      "entrada": "Grátis",
+      "classificacao": "Até 2 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas antes da atividade"
+    },
+    {
+      "id": "lebebe-4",
+      "atividade": "lebebe",
+      "titulo": "Lê, bebê!!!",
+      "tipo": "Vivência",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Alan Pablo, educador do Espaço de Brincar",
+      "descricao": "Mediação de leitura para bebês e suas famílias.",
+      "local": "Biblioteca",
+      "data": "2026-11-27",
+      "inicio": "16:00",
+      "fim": "17:00",
+      "entrada": "Grátis",
+      "classificacao": "Até 2 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas antes da atividade"
+    },
+    {
+      "id": "literamusica-1",
+      "atividade": "literamusica",
+      "titulo": "Litera-música para bebês e suas famílias",
+      "tipo": "Vivência",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Alan Pablo, educador do Espaço de Brincar",
+      "descricao": "Leitura e cantigas misturadas de forma lúdica.",
+      "local": "Biblioteca",
+      "data": "2026-11-08",
+      "inicio": "10:30",
+      "fim": "11:30",
+      "entrada": "Grátis",
+      "classificacao": "Até 2 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 30 minutos antes"
+    },
+    {
+      "id": "literamusica-2",
+      "atividade": "literamusica",
+      "titulo": "Litera-música para bebês e suas famílias",
+      "tipo": "Vivência",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Alan Pablo, educador do Espaço de Brincar",
+      "descricao": "Leitura e cantigas misturadas de forma lúdica.",
+      "local": "Biblioteca",
+      "data": "2026-11-22",
+      "inicio": "10:30",
+      "fim": "11:30",
+      "entrada": "Grátis",
+      "classificacao": "Até 2 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 30 minutos antes"
+    },
+    {
+      "id": "argila-1",
+      "atividade": "argila",
+      "titulo": "Passarinhos de argila",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Alexandre Anezio, agente de educação ambiental",
+      "descricao": "Modelagem com argila e conversa sobre os bichos da Mata Atlântica e do Cerrado.",
+      "local": "Sala 1",
+      "data": "2026-11-08",
+      "inicio": "10:30",
+      "fim": "12:30",
+      "entrada": "Grátis",
+      "classificacao": "4 a 12 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 30 minutos antes"
+    },
+    {
+      "id": "argila-2",
+      "atividade": "argila",
+      "titulo": "Passarinhos de argila",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Alexandre Anezio, agente de educação ambiental",
+      "descricao": "Modelagem com argila e conversa sobre os bichos da Mata Atlântica e do Cerrado.",
+      "local": "Sala 1",
+      "data": "2026-11-20",
+      "inicio": "10:30",
+      "fim": "12:30",
+      "entrada": "Grátis",
+      "classificacao": "4 a 12 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 30 minutos antes"
+    },
+    {
+      "id": "argila-3",
+      "atividade": "argila",
+      "titulo": "Passarinhos de argila",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Alexandre Anezio, agente de educação ambiental",
+      "descricao": "Modelagem com argila e conversa sobre os bichos da Mata Atlântica e do Cerrado.",
+      "local": "Sala 1",
+      "data": "2026-11-21",
+      "inicio": "10:30",
+      "fim": "12:30",
+      "entrada": "Grátis",
+      "classificacao": "4 a 12 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 30 minutos antes"
+    },
+    {
+      "id": "plumas-1",
+      "atividade": "plumas",
+      "titulo": "Quadros de plumas",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Ressigi, costurando significados",
+      "descricao": "Colagem com retalhos para retratar aves em seus habitats.",
+      "local": "Sala 1",
+      "data": "2026-11-14",
+      "inicio": "10:30",
+      "fim": "12:30",
+      "entrada": "Grátis",
+      "classificacao": "4 a 12 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 30 minutos antes"
+    },
+    {
+      "id": "ecobags-1",
+      "atividade": "ecobags",
+      "titulo": "Customização de ecobags com aves brasileiras",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Ressigi, costurando significados",
+      "descricao": "Cada criança pinta a própria sacola com estêncil e conversa sobre as aves da região.",
+      "local": "Sala 1",
+      "data": "2026-11-15",
+      "inicio": "10:30",
+      "fim": "12:30",
+      "entrada": "Grátis",
+      "classificacao": "4 a 12 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 30 minutos antes"
+    },
+    {
+      "id": "batucada-1",
+      "atividade": "batucada",
+      "titulo": "Batucada de primeira",
+      "tipo": "Vivência",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Macamba N'Goma",
+      "descricao": "Instrumentos artesanais de materiais naturais para bebês e famílias. Turmas às 10h30 e às 12h.",
+      "local": "Sala de Oficinas",
+      "data": "2026-11-15",
+      "inicio": "10:30",
+      "fim": "13:00",
+      "entrada": "Grátis",
+      "classificacao": "Até 2 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 30 minutos antes"
+    },
+    {
+      "id": "batucada-2",
+      "atividade": "batucada",
+      "titulo": "Batucada de primeira",
+      "tipo": "Vivência",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Macamba N'Goma",
+      "descricao": "Instrumentos artesanais de materiais naturais para bebês e famílias. Turmas às 10h30 e às 12h.",
+      "local": "Sala de Oficinas",
+      "data": "2026-11-29",
+      "inicio": "10:30",
+      "fim": "13:00",
+      "entrada": "Grátis",
+      "classificacao": "Até 2 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 30 minutos antes"
+    },
+    {
+      "id": "sobrevivem-1",
+      "atividade": "sobrevivem",
+      "titulo": "Passarinhos: como sobrevivem?",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Giulia Passarinha, bióloga",
+      "descricao": "Um jogo em que cada criança cumpre as tarefas de um dia de passarinho.",
+      "local": "Sala 1",
+      "data": "2026-11-28",
+      "inicio": "10:30",
+      "fim": "12:30",
+      "entrada": "Grátis",
+      "classificacao": "4 a 12 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 30 minutos antes"
+    },
+    {
+      "id": "enxergando-1",
+      "atividade": "enxergando",
+      "titulo": "Enxergando como um passarinho",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Crianças"
+      ],
+      "com": "Giulia Passarinha, bióloga",
+      "descricao": "Como as aves enxergam e sobrevivem na cidade e na natureza.",
+      "local": "Sala 1",
+      "data": "2026-11-29",
+      "inicio": "10:30",
+      "fim": "12:30",
+      "entrada": "Grátis",
+      "classificacao": "4 a 12 anos",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 30 minutos antes"
+    },
+    {
+      "id": "tspi-1",
+      "atividade": "tspi",
+      "titulo": "Encontro TSPI Sorocaba e Piracicaba",
+      "tipo": "Encontro",
+      "trilhas": [
+        "Pessoas idosas"
+      ],
+      "com": "Ana Flores, educadora",
+      "descricao": "Percussão, cantigas e uma grande ciranda entre os grupos das duas unidades.",
+      "local": "Ginásio",
+      "data": "2026-11-01",
+      "inicio": "10:00",
+      "fim": "12:30",
+      "entrada": "Grátis",
+      "classificacao": "60+",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "refl-raiz-1",
+      "atividade": "refl-raiz",
+      "titulo": "Reflorestando os sentidos: raiz e caule",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Pessoas idosas"
+      ],
+      "com": "Giane Carneiro, aromaterapeuta",
+      "descricao": "Caminhada consciente, aromas e um creme feito por cada participante.",
+      "local": "Espaço de Tecnologias e Artes",
+      "data": "2026-11-04",
+      "inicio": "13:30",
+      "fim": "15:00",
+      "entrada": "Grátis",
+      "classificacao": "60+",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "ponto-1",
+      "atividade": "ponto",
+      "titulo": "Ponto de encontro",
+      "tipo": "Bate-papo",
+      "trilhas": [
+        "Pessoas idosas"
+      ],
+      "com": "Técnicos do Sesc Sorocaba",
+      "descricao": "Roda de conversa e apresentação da programação do mês.",
+      "local": "Sala 1",
+      "data": "2026-11-05",
+      "inicio": "13:00",
+      "fim": "13:30",
+      "entrada": "Grátis",
+      "classificacao": "60+",
+      "acessibilidade": "",
+      "como_participar": ""
+    },
+    {
+      "id": "cirandas-1",
+      "atividade": "cirandas",
+      "titulo": "Cirandas do tempo: dança modular",
+      "tipo": "Vivência",
+      "trilhas": [
+        "Pessoas idosas"
+      ],
+      "com": "Juliane Pimenta, gerontóloga",
+      "descricao": "Dança acessível e criativa para o público 60+.",
+      "local": "Espaço de Exposições",
+      "data": "2026-11-05",
+      "inicio": "13:30",
+      "fim": "14:30",
+      "entrada": "Grátis",
+      "classificacao": "60+",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "refl-folhas-1",
+      "atividade": "refl-folhas",
+      "titulo": "Reflorestando os sentidos: folhas",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Pessoas idosas"
+      ],
+      "com": "Giane Carneiro, aromaterapeuta",
+      "descricao": "Texturas, arte com folhas e um inalador aromático para levar.",
+      "local": "Espaço de Tecnologias e Artes",
+      "data": "2026-11-11",
+      "inicio": "13:30",
+      "fim": "15:00",
+      "entrada": "Grátis",
+      "classificacao": "60+",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "yoga60-1",
+      "atividade": "yoga60",
+      "titulo": "Corpo presente, vida em movimento: yoga 60+",
+      "tipo": "Vivência",
+      "trilhas": [
+        "Pessoas idosas",
+        "Esporte"
+      ],
+      "com": "Tatiana Perez, educadora físico-esportiva",
+      "descricao": "Movimento, respiração e presença em ritmo tranquilo.",
+      "local": "Ginásio",
+      "data": "2026-11-12",
+      "inicio": "13:30",
+      "fim": "14:30",
+      "entrada": "Grátis",
+      "classificacao": "60+",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "yoga60-2",
+      "atividade": "yoga60",
+      "titulo": "Corpo presente, vida em movimento: yoga 60+",
+      "tipo": "Vivência",
+      "trilhas": [
+        "Pessoas idosas",
+        "Esporte"
+      ],
+      "com": "Tatiana Perez, educadora físico-esportiva",
+      "descricao": "Movimento, respiração e presença em ritmo tranquilo.",
+      "local": "Ginásio",
+      "data": "2026-11-19",
+      "inicio": "13:30",
+      "fim": "14:30",
+      "entrada": "Grátis",
+      "classificacao": "60+",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "yoga60-3",
+      "atividade": "yoga60",
+      "titulo": "Corpo presente, vida em movimento: yoga 60+",
+      "tipo": "Vivência",
+      "trilhas": [
+        "Pessoas idosas",
+        "Esporte"
+      ],
+      "com": "Tatiana Perez, educadora físico-esportiva",
+      "descricao": "Movimento, respiração e presença em ritmo tranquilo.",
+      "local": "Ginásio",
+      "data": "2026-11-26",
+      "inicio": "13:30",
+      "fim": "14:30",
+      "entrada": "Grátis",
+      "classificacao": "60+",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "refl-flores-1",
+      "atividade": "refl-flores",
+      "titulo": "Reflorestando os sentidos: flores e frutos",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Pessoas idosas"
+      ],
+      "com": "Giane Carneiro, aromaterapeuta",
+      "descricao": "Aromas florais, memórias afetivas e um spray aromático.",
+      "local": "Espaço de Tecnologias e Artes",
+      "data": "2026-11-18",
+      "inicio": "13:30",
+      "fim": "15:00",
+      "entrada": "Grátis",
+      "classificacao": "60+",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    },
+    {
+      "id": "refl-sementes-1",
+      "atividade": "refl-sementes",
+      "titulo": "Reflorestando os sentidos: sementes",
+      "tipo": "Oficina",
+      "trilhas": [
+        "Pessoas idosas"
+      ],
+      "com": "Giane Carneiro, aromaterapeuta",
+      "descricao": "Histórias, conquistas e um amuleto de elementos naturais.",
+      "local": "Espaço de Tecnologias e Artes",
+      "data": "2026-11-25",
+      "inicio": "13:30",
+      "fim": "15:00",
+      "entrada": "Grátis",
+      "classificacao": "60+",
+      "acessibilidade": "",
+      "como_participar": "Retirada de senhas 1 hora antes"
+    }
+  ]
+}
