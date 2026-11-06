@@ -246,12 +246,14 @@
   function renderProg() {
     const all = filtered(true), list = filtered(false), hidden = all.length - list.length;
     const tISO = todayISO(), n = now(), over = SESS.length && +n > lastEnd();
-    const counts = {}; SESS.forEach(s => s.trilhas.forEach(t => counts[t] = (counts[t] || 0) + 1));
+    // contagem segue o dia, a busca, o local e o "mostrar o que já passou"; só ignora a trilha escolhida
+    const tr = state.trilha; state.trilha = "all"; const base = filtered(false); state.trilha = tr;
+    const counts = {}; base.forEach(s => s.trilhas.forEach(t => counts[t] = (counts[t] || 0) + 1));
     const fech = E().fechados || [];
     let days = `<button class="day wide" data-dia="todos" aria-pressed="${state.dia === "todos"}"><span class="d" style="font-size:.9375rem">Todos</span></button>`;
     dayList().forEach(d => { const c = fech.includes(d); days += `<button class="day${c ? " closed" : ""}${d === tISO ? " today" : ""}" data-dia="${d}" aria-pressed="${state.dia === d}" aria-label="${fmtDay(d)}"><span class="wd">${wd(d)}</span><span class="d">${+d.slice(8)}</span><span class="tg">${d === tISO ? "hoje" : c ? "fechado" : ""}</span></button>`; });
-    let chips = `<button class="chip" data-trilha="all" aria-pressed="${state.trilha === "all"}">Todas <span class="n">${SESS.length}</span></button>`;
-    CFG.trilhas.forEach(t => chips += `<button class="chip" data-trilha="${esc(t)}" aria-pressed="${state.trilha === t}"><span class="dot" style="--c:${trilhaColor(t)}"></span>${esc(t)} <span class="n">${counts[t] || 0}</span></button>`);
+    let chips = `<button class="chip" data-trilha="all" aria-pressed="${state.trilha === "all"}">Todas <span class="n">${base.length}</span></button>`;
+    CFG.trilhas.forEach(t => chips += `<button class="chip${counts[t] ? "" : " zero"}" data-trilha="${esc(t)}" aria-pressed="${state.trilha === t}"><span class="dot" style="--c:${trilhaColor(t)}"></span>${esc(t)} <span class="n">${counts[t] || 0}</span></button>`);
     let body = "";
     if (over) body += `<div class="banner"><b>Programação encerrada.</b> ${esc(E().mensagem_final || "Obrigado pela participação.")}</div>`;
     if (state.tab !== "favoritos" && state.dia !== "todos" && fech.includes(state.dia)) body += `<div class="empty">Fechado neste dia.</div>`;

@@ -207,3 +207,6 @@ body.sheet-open{overflow:hidden}
   @keyframes fadein{from{opacity:0}}
   @keyframes slideup{from{transform:translateY(40px);opacity:.4}}
 }
+
+.chip.zero{opacity:.55}
+.chip.zero[aria-pressed="true"]{opacity:1}
